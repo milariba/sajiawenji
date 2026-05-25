@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="bo">
+<head>
+    <meta charset="UTF-8">
+    <title>ས་སྐྱའི་བཀའ་འབུམ་ཁག་གི་ཉམས་ལེན་དྲ་ཚིག</title>
+    <style>
+        body {
+            font-family: "Microsoft Himalaya", "Noto Sans Tibetan", "Tibetan Machine Uni", sans-serif;
+            font-size: 20px;
+            line-height: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+            background-color: #faf8f5;
+            color: #333;
+        }
+        .sakya-header {
+            background: linear-gradient(135deg, #1a237e 0%, #c62828 50%, #f5f5f5 100%);
+            padding: 40px 30px;
+            margin: 0 -20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sakya-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
+        }
+        .sakya-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
+        }
+        .header-title-tib {
+            font-size: 42px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .header-title-cn {
+            font-size: 32px;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .header-title-en {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        .header-subtitle {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            border-bottom: 3px solid #bfa76f;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 26px;
+            color: #34495e;
+            border-left: 5px solid #bfa76f;
+            padding-left: 20px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+        .intro {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .collection-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-top: 5px solid #bfa76f;
+        }
+        .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .collection-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .author-name {
+            font-size: 18px;
+            color: #bfa76f;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .collection-desc {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .main-link {
+            display: inline-block;
+            background: #bfa76f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .main-link:hover {
+            background: #a08b5b;
+        }
+        .nav-bar {
+            background: linear-gradient(to right, #1a237e, #283593);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 3px solid #c62828;
+            position: relative;
+        }
+        .nav-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
+            border-radius: 10px 10px 0 0;
+        }
+        .nav-bar a {
+            color: #ffeb3b;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 22px;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        .nav-bar a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            transform: scale(1.1);
+        }
+        .highlight-box {
+            background: #fff8e1;
+            border: 2px solid #bfa76f;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .section-note {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sakya-header">
+    <div class="header-title-tib">ས་སྐྱའི་བཀའ་འབུམ་ཆེན་མོ་རྣམས་ཀྱི་དྲ་ཚིག</div>
+    <div class="header-title-cn">萨迦派诸大善知识文集导航</div>
+    <div class="header-title-en">Sakya School Great Masters' Collected Works</div>
+    <div class="header-subtitle">
+        རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། · Gyalyong Sachen · 嘉样萨千网站
+    </div>
+</div>
+
+<div class="nav-bar">
+    <a href="#main">གཙོ་ངོས།</a>
+    <a href="#sakya">ས་སྐྱ།</a>
+    <a href="#ngor">ངོར་ཆེན།</a>
+    <a href="#rong">རོང་སྟོན།</a>
+    <a href="#panchen">པཎ་ཆེན།</a>
+    <a href="#zhuchen">ཞུ་ཆེན།</a>
+    <a href="#loter">བློ་གཏེར།</a>
+    <a href="#platform">སྤྱི་ཚོགས་སྟེགས་བུ།</a>
+</div>
+
+<div class="intro" id="main">
+    <div style="font-size: 24px; margin-bottom: 20px;">
+        རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། གྱི་བཀའ་འབུམ་ཁག་ལ་ཉམས་ལེན་བྱེད་པའི་དྲ་ཚིག
+    </div>
+    <div style="font-size: 18px; color: #666; margin-bottom: 20px;">
+        嘉样萨千网站 · 萨迦派诸大善知识文集浏览指南
+    </div>
+    <div style="font-size: 16px; color: #888; margin-bottom: 30px;">
+        འདི་ནི་རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (Gyalyong Sachen) གྱི་དྲ་ཐོག་མཛོད་ནས་ས་སྐྱའི་བཀའ་འབུམ་ཁག་ལ་ཉམས་ལེན་བྱེད་པར་སྟབས་བདེ་ཡོང་བའི་ཆེད་དུ་བསྐྲུན་པའི་དྲ་ཚིག་ཡིན།
+    </div>
+</div>
+
+<div class="highlight-box">
+    <strong>གསལ་བཤད། / 说明：</strong><br><br>
+    དྲ་ཚིག་འདིའི་ནང་དུ་ས་སྐྱའི་གདུང་རབས་ཆེན་པོ་དང་མཁས་གྲུབ་ཆེན་པོ་རྣམས་ཀྱི་བཀའ་འབུམ་དྲུག་ཚུད་ཡོད། སྟེགས་བུ་རེ་རེ་ལ་གནོན་ན་དྲ་ཐག་དེར་ཐད་ཀར་འཇུག་ཐུབ།<br><br>
+    本页面收录了萨迦派六大文集，点击任意卡片即可进入对应网页浏览。
+</div>
+
+<h2 id="sakya">ས་སྐྱ་བཀའ་འབུམ། / 萨迦文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">ས་སྐྱ་བཀའ་འབུམ།</div>
+        <div class="author-name">ས་སྐྱ་གོང་མ་རྣམ་ལྔ།</div>
+        <div class="collection-desc">
+            萨迦五祖文集。包括贡嘎宁波（ཀུན་དགའ་སྙིང་པོ་）、索南孜摩（བསོད་ནམས་རྩེ་མོ་）、扎巴坚赞（གྲགས་པ་རྒྱལ་མཚན་）、萨迦班智达（འཇམ་མགོན་ས་སྐྱ་པཎྜི་ཏ་）、八思巴（བློ་གྲོས་རྒྱལ་མཚན་）等萨迦派祖师的著作。内容涵盖道果、经论注释、仪轨、传记等。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=2643" class="main-link" target="_blank">
+            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="ngor">ངོར་ཆེན་བཀའ་འབུམ། / 鄂钦文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">ངོར་ཆེན་བཀའ་འབུམ།</div>
+        <div class="author-name">ངོར་ཆེན་རྡོ་རྗེ་འཆང་ཀུན་དགའ་བཟང་པོ།</div>
+        <div class="collection-desc">
+            鄂钦·金刚持·贡嘎桑波文集。共四卷，包括道果教授、生起次第与圆满次第修法、萨迦派传承仪轨及各类经论注释。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=4446" class="main-link" target="_blank">
+            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="rong">རོང་སྟོན་གསུང་འབུམ། / 荣顿文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">རོང་སྟོན་གསུང་འབུམ།</div>
+        <div class="author-name">ཤཱཀྱ་རྒྱལ་མཚན་དཔལ་བཟང་པོ།</div>
+        <div class="collection-desc">
+            荣顿·释迦坚赞·华桑波文集。内容包括传记、赞颂、经论注释、生起次第与圆满次第修法教授、显密经论注解等。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=5145" class="main-link" target="_blank">
+            📚 གསུང་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="panchen">པཎ་ཆེན་ཤཱ་མཆོག་གསུང་འབུམ། / 班钦夏莫文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">པཎ་ཆེན་ཤཱ་མཆོག་གསུང་འབུམ།</div>
+        <div class="author-name">པཎ་ཆེན་ཤཱ་མཆོག།</div>
+        <div class="collection-desc">
+            班钦夏莫文集。萨迦派重要祖师的著作合集，包含道果教授、显密经论注释及各类修法仪轨。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=5650" class="main-link" target="_blank">
+            📚 གསུང་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="zhuchen">ཞུ་ཆེན་གསུང་འབུམ། / 主钦文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">ཞུ་ཆེན་གསུང་འབུམ།</div>
+        <div class="author-name">ཞུ་ཆེན་ཚུལ་ཁྲིམས་རིན་ཆེན།</div>
+        <div class="collection-desc">
+            主钦·次成仁钦文集。萨迦派重要学者的著作，内容涵盖上师瑜伽、道果教授、各类修法仪轨及经论注释。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=9210" class="main-link" target="_blank">
+            📚 གསུང་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="loter">བློ་གཏེར་བཀའ་འབུམ། / 洛特丹文集</h2>
+
+<div class="collection-grid">
+    <div class="collection-card">
+        <div class="collection-title">བློ་གཏེར་བཀའ་འབུམ།</div>
+        <div class="author-name">འཇམ་དབྱངས་བློ་གཏེར་དབང་པོ།</div>
+        <div class="collection-desc">
+            绛央洛特丹旺波文集。内容包括因明、中观、般若、阿毗达磨及密宗修法等各类经论注释与教授。
+        </div>
+        <a href="https://www.gyalyongsachen.com/?page_id=10237" class="main-link" target="_blank">
+            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
+        </a>
+    </div>
+</div>
+
+<h2 id="platform">སྤྱི་ཚོགས་སྟེགས་བུ། / 公众平台</h2>
+
+<div class="collection-grid">
+    <div class="collection-card" style="border-top: 5px solid #4caf50; grid-column: 1 / -1;">
+        <div class="collection-title" style="color: #2e7d32;">Sk.大悲利众洲</div>
+        <div class="author-name" style="color: #4caf50;">སྤྱི་ཚོགས་སྟེགས་བུ། / 微信公众平台</div>
+        <div class="collection-desc">
+            རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (Gyalyong Sachen) གྱི་དྲ་ཐག་ཀྲུང་གོའི་ནང་ཁུལ་ནས་ཁ་ཕྱེ་དཀའ་བའི་གནད་དོན་ཡོད་པས། སྤྱི་ཚོགས་སྟེགས་བུ་འདི་ནས་བཀའ་འབུམ་དང་འབྲེལ་བའི་གནས་ཚུད་དང་ཞིབ་འཇུག་གི་ཆ་འཕྲིན་ཁག་ལ་ལྟ་ཐུབ།
+            <br><br>
+            由于嘉样萨千网站在中国内地访问受限，可通过此公众平台获取相关文献资源与研究资讯。
+            <br><br>
+            <strong>སྤྱོད་སྟངས། / 使用方法：</strong><br>
+            1. 微信（WeChat）ནང་དུ་འཛུལ།<br>
+            2. སྤྱི་ཚོགས་སྟེགས་བུ་ཁ་ཐྱོང་དུ "Sk.大悲利众洲" ཞེས་པ་བྲིས་ནས་འཚོལ།<br>
+            3. སྤྱི་ཚོགས་སྟེགས་བུ་དེ་ལ་དོ་ཁུར་བྱས་ནས་གསུང་རབ་ཁག་ལ་ལྟ་ཐུབ།
+        </div>
+        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px;">
+            <div style="font-size: 18px; color: #2e7d32; margin-bottom: 10px;">
+                📱 微信搜索：Sk.大悲利众洲
+            </div>
+            <div style="font-size: 16px; color: #555;">
+                འཕྲིན་ཕྲན་ནང་དུ "Sk.大悲利众洲" ཞེས་བྲིས་ནས་འཚོལ་རོགས།
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="highlight-box" style="margin-top: 50px;">
+    <strong>དྲ་ཚིག་འདི་བེད་སྤྱོད་བྱེད་སྟངས། / 使用指南：</strong><br><br>
+    1. སྟེགས་བུ་རེ་རེ་ལ་གནོན་ན་དྲ་ཐག་དེར་ཐད་ཀར་འཇུག་ཐུབ། 点击卡片即可进入对应网页。<br>
+    2. དྲ་ཐག་ཚང་མ་གསར་བསྐྲུན་གྱི་ཐོག་ནས་འབྱེད་པ་ཡིན། 所有链接均在新窗口打开。<br>
+    3. གལ་ཏེ་དྲ་ཐག་མུ་མཐུད་ནས་མ་རྙེད་པ་ཞིག་ཡོད་ན། དྲ་ཐག་གཙོ་ངོས་ནས་འཚོལ་རོགས། 若找不到具体链接，请从总页面进入查找。<br>
+    4. དྲ་ཚིག་འདི་ཉམས་ལེན་བྱེད་བཞིན་དུ་རྒྱུན་དུ་བཟོ་བཅོས་དང་ཁ་སྣོན་བྱེད་རྒྱུ་ཡིན། 本页面将持续更新完善。
+</div>
+
+<div style="text-align: center; margin-top: 50px; padding: 20px; color: #888; font-size: 16px; border-top: 1px solid #ddd;">
+    དྲ་ཚིག་འདི་རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (www.gyalyongsachen.com) གྱི་དྲ་ཐོག་མཛོད་ལ་གཞིགས་ནས་བསྐྲུན་པ་ཡིན།<br>
+    来源：嘉样萨千网站 | 为修学萨迦派诸大善知识文集而制作
+</div>
+
+</body>
+</html>
