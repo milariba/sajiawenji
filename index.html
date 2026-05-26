@@ -2,366 +2,1452 @@
 <html lang="bo">
 <head>
     <meta charset="UTF-8">
-    <title>ས་སྐྱའི་བཀའ་འབུམ་ཁག་གི་ཉམས་ལེན་དྲ་ཚིག</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ། | 萨迦高级佛学院</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --sakya-red: #9b2335;
+            --sakya-white: #f8f6f0;
+            --sakya-dark: #1a1a2e;
+            --sakya-blue: #16213e;
+            --sakya-gold: #c9a84c;
+            --sakya-cream: #f5f0e8;
+            --sakya-light: #e8e0d0;
+            --text-primary: #1a1a2e;
+            --text-secondary: #5a5248;
+            --border-color: #d4c8b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: "Microsoft Himalaya", "Noto Sans Tibetan", "Tibetan Machine Uni", sans-serif;
-            font-size: 20px;
-            line-height: 2;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-            background-color: #faf8f5;
-            color: #333;
-        }
-        .sakya-header {
-            background: linear-gradient(135deg, #1a237e 0%, #c62828 50%, #f5f5f5 100%);
-            padding: 40px 30px;
-            margin: 0 -20px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .sakya-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
-        }
-        .sakya-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
-        }
-        .header-title-tib {
-            font-size: 42px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .header-title-cn {
-            font-size: 32px;
-            color: #ffeb3b;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .header-title-en {
-            font-size: 24px;
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            letter-spacing: 2px;
-        }
-        .header-subtitle {
-            font-size: 18px;
-            color: #e0e0e0;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.3);
-        }
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            color: #2c3e50;
-            border-bottom: 3px solid #bfa76f;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-        h2 {
-            font-size: 26px;
-            color: #34495e;
-            border-left: 5px solid #bfa76f;
-            padding-left: 20px;
-            margin-top: 50px;
-            margin-bottom: 25px;
-        }
-        .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        .collection-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-top: 5px solid #bfa76f;
-        }
-        .collection-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .collection-title {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .author-name {
-            font-size: 18px;
-            color: #bfa76f;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .collection-desc {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
+            font-family: 'Noto Sans SC', 'Noto Serif Tibetan', sans-serif;
+            background: var(--sakya-white);
+            color: var(--text-primary);
             line-height: 1.8;
+            overflow-x: hidden;
         }
-        .main-link {
-            display: inline-block;
-            background: #bfa76f;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
+
+        /* ===== LANGUAGE SELECT OVERLAY ===== */
+        #lang-select-overlay {
+            position: fixed; inset: 0; z-index: 10000;
+            background: var(--sakya-dark);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.6s ease;
+        }
+        #lang-select-overlay.hidden { opacity: 0; pointer-events: none; }
+        .lang-select-logo {
+            width: 80px; height: 80px;
+            background: var(--sakya-red);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--sakya-gold);
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--sakya-gold);
+        }
+        .lang-select-title {
+            font-family: 'Noto Serif Tibetan', serif;
+            font-size: 2rem; color: var(--sakya-gold);
+            margin-bottom: 0.5rem;
+        }
+        .lang-select-subtitle {
+            font-size: 1.2rem; color: rgba(245,240,232,0.8);
+            margin-bottom: 2.5rem;
+        }
+        .lang-select-buttons {
+            display: flex; gap: 1.5rem;
+        }
+        .lang-select-btn {
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--sakya-gold);
+            background: transparent;
+            color: var(--sakya-gold);
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Noto Serif Tibetan', serif;
+        }
+        .lang-select-btn:hover {
+            background: var(--sakya-gold);
+            color: var(--sakya-dark);
+        }
+        .lang-select-btn .cn-label {
+            display: block;
+            font-size: 0.95rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            background: var(--sakya-dark);
+            color: var(--sakya-gold);
+            position: sticky; top: 0; z-index: 900;
+            border-bottom: 3px solid var(--sakya-red);
+        }
+        .header-topbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 2rem;
+            background: rgba(0,0,0,0.25);
+        }
+        .header-brand {
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .brand-icon {
+            width: 48px; height: 48px;
+            background: var(--sakya-red);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--sakya-gold);
+            border: 2px solid var(--sakya-gold);
+        }
+        .brand-text { display: flex; flex-direction: column; }
+        .brand-text .tib { font-family: 'Noto Serif Tibetan', serif; font-size: 1.3rem; font-weight: 700; }
+        .brand-text .cn { font-size: 0.8rem; opacity: 0.85; }
+        .header-actions {
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .user-progress-chip {
+            background: rgba(201,168,76,0.15);
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            border: 1px solid rgba(201,168,76,0.3);
+        }
+        .lang-toggle {
+            display: flex; gap: 0.3rem;
+        }
+        .lang-toggle-btn {
+            padding: 0.3rem 0.7rem;
+            border: 1px solid var(--sakya-gold);
+            background: transparent;
+            color: var(--sakya-gold);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.2s;
+        }
+        .lang-toggle-btn:hover, .lang-toggle-btn.active {
+            background: var(--sakya-gold); color: var(--sakya-dark);
+        }
+        .user-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--sakya-red);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; cursor: pointer;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .main-nav {
+            display: flex; justify-content: center;
+            background: var(--sakya-blue);
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            padding: 0.75rem 1.2rem;
+            color: rgba(245,240,232,0.9);
             text-decoration: none;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        .main-link:hover {
-            background: #a08b5b;
-        }
-        .nav-bar {
-            background: linear-gradient(to right, #1a237e, #283593);
-            color: white;
-            padding: 25px 20px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 3px solid #c62828;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none; background: transparent;
             position: relative;
         }
-        .nav-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(to right, #ffffff 33%, #1a237e 33%, #1a237e 66%, #c62828 66%);
-            border-radius: 10px 10px 0 0;
+        .nav-link:hover, .nav-link.active {
+            color: var(--sakya-gold);
+            background: rgba(201,168,76,0.08);
         }
-        .nav-bar a {
-            color: #ffeb3b;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 22px;
-            font-weight: bold;
-            transition: color 0.3s;
-            display: inline-block;
-            padding: 5px 10px;
+        .nav-link.active::after {
+            content: ''; position: absolute; bottom: 0; left: 15%; right: 15%;
+            height: 2px; background: var(--sakya-gold);
         }
-        .nav-bar a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-            transform: scale(1.1);
+        .nav-link .cn-label { display: block; font-size: 0.72rem; opacity: 0.7; }
+
+        /* ===== VIEW SYSTEM ===== */
+        .view { display: none; animation: viewFade 0.35s ease; }
+        .view.active { display: block; }
+        @keyframes viewFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--sakya-dark);
+            color: var(--sakya-cream);
+            padding: 4rem 2rem; text-align: center;
+            position: relative; overflow: hidden;
         }
-        .highlight-box {
-            background: #fff8e1;
-            border: 2px solid #bfa76f;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='%239b2335' fill-opacity='0.06'/%3E%3C/svg%3E");
+            opacity: 0.4;
         }
-        .section-note {
-            background: #e8f4fd;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 16px;
-            color: #555;
+        .hero-content { position: relative; max-width: 850px; margin: 0 auto; }
+        .hero h1 {
+            font-family: 'Noto Serif Tibetan', serif;
+            font-size: 2.2rem; color: var(--sakya-gold);
+            margin-bottom: 0.8rem;
         }
+        .hero h1 .cn-title {
+            display: block; font-size: 1.3rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--sakya-cream); margin-top: 0.4rem;
+        }
+        .hero-desc {
+            font-size: 1.05rem; opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .hero-btns {
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.85rem 2.2rem; border-radius: 6px;
+            text-decoration: none; font-weight: 500;
+            transition: all 0.3s; cursor: pointer;
+            border: none; font-size: 0.95rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-primary {
+            background: var(--sakya-red); color: white;
+        }
+        .btn-primary:hover { background: #b02d3f; transform: translateY(-2px); }
+        .btn-gold {
+            background: var(--sakya-gold); color: var(--sakya-dark);
+        }
+        .btn-gold:hover { background: #d4b55a; }
+        .btn-outline {
+            background: transparent; color: var(--sakya-cream);
+            border: 2px solid var(--sakya-gold);
+        }
+        .btn-outline:hover { background: var(--sakya-gold); color: var(--sakya-dark); }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-head {
+            text-align: center; margin-bottom: 2.5rem; padding-top: 2rem;
+        }
+        .section-head h2 {
+            font-family: 'Noto Serif Tibetan', serif;
+            font-size: 1.7rem; color: var(--sakya-red);
+            margin-bottom: 0.4rem;
+        }
+        .section-head .cn-title { color: var(--text-secondary); font-size: 1rem; }
+        .section-head .desc {
+            max-width: 600px; margin: 0.6rem auto 0;
+            color: var(--text-secondary); font-size: 0.95rem;
+        }
+
+        /* ===== PHASE CARDS ===== */
+        .phases-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .phase-card {
+            background: white; border-radius: 14px;
+            overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            transition: all 0.3s; cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+        .phase-card:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
+        .phase-header {
+            padding: 1.4rem; color: white;
+        }
+        .phase-header.phase1 { background: #4a7c6f; }
+        .phase-header.phase2 { background: var(--sakya-blue); }
+        .phase-header.phase3 { background: var(--sakya-red); }
+        .phase-header h3 {
+            font-family: 'Noto Serif Tibetan', serif; font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+        .phase-header .phase-cn { font-size: 0.9rem; opacity: 0.9; }
+        .phase-header .phase-range {
+            display: inline-block; margin-top: 0.5rem;
+            padding: 0.2rem 0.7rem; background: rgba(255,255,255,0.2);
+            border-radius: 4px; font-size: 0.8rem;
+        }
+        .phase-body { padding: 1.4rem; }
+        .phase-body p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem; }
+        .phase-stats {
+            display: flex; gap: 0.8rem; margin-bottom: 1.2rem;
+        }
+        .p-stat {
+            flex: 1; text-align: center; padding: 0.5rem;
+            background: var(--sakya-cream); border-radius: 6px;
+        }
+        .p-stat .num { font-weight: 700; color: var(--sakya-red); font-size: 1.1rem; }
+        .p-stat .lbl { font-size: 0.72rem; color: var(--text-secondary); }
+        .phase-btn {
+            width: 100%; padding: 0.7rem; border: none; border-radius: 6px;
+            color: white; font-weight: 500; cursor: pointer; transition: opacity 0.2s;
+        }
+        .phase1 .phase-btn { background: #4a7c6f; }
+        .phase2 .phase-btn { background: var(--sakya-blue); }
+        .phase3 .phase-btn { background: var(--sakya-red); }
+        .phase-btn:hover { opacity: 0.9; }
+
+        /* ===== LEVELS DETAIL ===== */
+        .levels-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .level-group { margin-bottom: 2rem; }
+        .level-group-title {
+            display: flex; align-items: center; gap: 0.8rem;
+            margin-bottom: 1rem; padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .level-group-title h3 {
+            font-family: 'Noto Serif Tibetan', serif; color: var(--sakya-red); font-size: 1.2rem;
+        }
+        .level-group-title .cn { color: var(--text-secondary); font-size: 0.9rem; }
+        .level-row {
+            display: flex; gap: 1rem; margin-bottom: 1rem;
+            background: white; border-radius: 10px; padding: 1.2rem;
+            border: 1px solid var(--border-color); align-items: flex-start;
+            transition: all 0.25s;
+        }
+        .level-row:hover { border-color: var(--sakya-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .level-num {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: white; flex-shrink: 0;
+            font-family: 'Noto Serif Tibetan', serif;
+        }
+        .level-num.l1, .level-num.l2, .level-num.l3 { background: #4a7c6f; }
+        .level-num.l4, .level-num.l5, .level-num.l6 { background: var(--sakya-blue); }
+        .level-num.l7, .level-num.l8, .level-num.l9 { background: var(--sakya-red); }
+        .level-info { flex: 1; }
+        .level-info h4 {
+            font-family: 'Noto Serif Tibetan', serif; font-size: 1.05rem;
+            color: var(--sakya-dark); margin-bottom: 0.2rem;
+        }
+        .level-info .cn-name { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+        .level-info .level-desc { font-size: 0.88rem; color: var(--text-secondary); }
+        .level-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+        .level-actions button {
+            padding: 0.4rem 1rem; border-radius: 4px; border: none;
+            font-size: 0.82rem; cursor: pointer; white-space: nowrap;
+        }
+        .btn-study { background: var(--sakya-blue); color: white; }
+        .btn-video { background: var(--sakya-gold); color: var(--sakya-dark); }
+        .btn-locked {
+            background: #ddd; color: #888; cursor: not-allowed;
+        }
+
+        /* ===== DICTIONARY TOOLTIP ===== */
+        .dict-term {
+            border-bottom: 1px dashed var(--sakya-gold);
+            cursor: help; position: relative;
+        }
+        .dict-tooltip {
+            display: none; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
+            background: var(--sakya-dark); color: var(--sakya-cream);
+            padding: 0.8rem 1rem; border-radius: 8px; width: 280px; z-index: 500;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            font-size: 0.85rem; line-height: 1.6;
+        }
+        .dict-tooltip::after {
+            content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            border: 6px solid transparent; border-top-color: var(--sakya-dark);
+        }
+        .dict-tooltip .dict-tib { font-family: 'Noto Serif Tibetan', serif; color: var(--sakya-gold); font-size: 1rem; }
+        .dict-tooltip .dict-cn { color: rgba(245,240,232,0.85); margin-top: 0.3rem; }
+        .dict-term:hover .dict-tooltip { display: block; }
+
+        /* ===== VIDEO PLAYER ===== */
+        .video-player-wrap {
+            max-width: 900px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .video-stage {
+            background: var(--sakya-dark); border-radius: 12px;
+            aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+            color: var(--sakya-gold); font-size: 4rem; position: relative; overflow: hidden;
+        }
+        .video-stage .play-btn {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(155,35,53,0.9); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; cursor: pointer; transition: all 0.3s;
+            border: 3px solid var(--sakya-gold);
+        }
+        .video-stage .play-btn:hover { transform: scale(1.08); background: var(--sakya-red); }
+        .video-info { padding: 1.2rem 0; }
+        .video-info h3 { font-family: 'Noto Serif Tibetan', serif; font-size: 1.2rem; color: var(--sakya-dark); }
+        .video-info .video-cn { color: var(--text-secondary); font-size: 0.95rem; }
+        .video-meta { display: flex; gap: 1rem; margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); }
+        .video-controls {
+            display: flex; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap;
+        }
+        .v-control {
+            padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--border-color);
+            background: white; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+        }
+        .v-control:hover { border-color: var(--sakya-gold); background: var(--sakya-cream); }
+        .v-control.active { background: var(--sakya-gold); color: var(--sakya-dark); border-color: var(--sakya-gold); }
+
+        /* ===== E-READER ===== */
+        .ereader-wrap {
+            max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .ereader-toolbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 1rem; background: white; border-radius: 8px;
+            margin-bottom: 1rem; border: 1px solid var(--border-color);
+        }
+        .ereader-panes {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+            background: white; border-radius: 10px; border: 1px solid var(--border-color);
+            overflow: hidden; min-height: 500px;
+        }
+        .ereader-pane { padding: 1.5rem; overflow-y: auto; max-height: 70vh; }
+        .ereader-pane.tibetan {
+            background: #faf8f3; font-family: 'Noto Serif Tibetan', serif;
+            font-size: 1.15rem; line-height: 2.2;
+        }
+        .ereader-pane.chinese {
+            background: #fff; font-size: 1rem; line-height: 2;
+        }
+        .ereader-pane h4 {
+            font-family: 'Noto Serif Tibetan', serif; color: var(--sakya-red);
+            margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);
+        }
+        .ereader-divider {
+            width: 3px; background: var(--sakya-gold);
+        }
+
+        /* ===== EXAM SYSTEM ===== */
+        .exam-wrap {
+            max-width: 750px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .exam-card {
+            background: white; border-radius: 12px; padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid var(--border-color);
+        }
+        .exam-progress {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .exam-progress-bar {
+            flex: 1; height: 10px; background: var(--border-color); border-radius: 5px; overflow: hidden;
+        }
+        .exam-progress-fill { height: 100%; background: var(--sakya-red); border-radius: 5px; transition: width 0.4s; }
+        .exam-q-text {
+            font-family: 'Noto Serif Tibetan', serif; font-size: 1.15rem;
+            background: var(--sakya-cream); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .exam-q-text .cn-q { font-family: 'Noto Sans SC', sans-serif; font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .exam-options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .exam-option {
+            padding: 1rem 1.2rem; border: 2px solid var(--border-color); border-radius: 8px;
+            background: white; cursor: pointer; text-align: left; transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        .exam-option:hover { border-color: var(--sakya-blue); background: rgba(30,58,95,0.03); }
+        .exam-option.correct { border-color: #4a7c6f; background: rgba(74,124,111,0.08); }
+        .exam-option.wrong { border-color: var(--sakya-red); background: rgba(155,35,53,0.06); }
+        .exam-option .cn-opt { display: block; color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.2rem; }
+        .exam-result-box { text-align: center; padding: 2rem; }
+        .exam-score-num { font-size: 3.5rem; font-weight: 700; color: var(--sakya-red); }
+
+        /* ===== CERTIFICATES ===== */
+        .cert-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .cert-card {
+            background: white; border-radius: 10px; padding: 1.5rem;
+            border: 1px solid var(--border-color); text-align: center;
+            transition: all 0.25s;
+        }
+        .cert-card:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+        .cert-card.locked { opacity: 0.5; }
+        .cert-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+        .cert-card h4 { font-family: 'Noto Serif Tibetan', serif; margin-bottom: 0.3rem; }
+        .cert-card .cert-cn { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+        .cert-status {
+            display: inline-block; padding: 0.25rem 0.8rem; border-radius: 4px; font-size: 0.8rem;
+        }
+        .cert-status.completed { background: rgba(74,124,111,0.12); color: #2d6b5e; }
+        .cert-status.pending { background: rgba(201,168,76,0.15); color: #8a7020; }
+        .cert-status.locked { background: #eee; color: #888; }
+
+        /* ===== FORUMS ===== */
+        .forum-wrap {
+            max-width: 900px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .forum-post {
+            background: white; border-radius: 10px; padding: 1.2rem;
+            border: 1px solid var(--border-color); margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+        .forum-post:hover { border-color: var(--sakya-gold); }
+        .forum-post-header {
+            display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;
+        }
+        .forum-author { display: flex; align-items: center; gap: 0.6rem; }
+        .forum-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--sakya-blue); color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+        }
+        .forum-author-info { font-size: 0.85rem; }
+        .forum-author-info .name { font-weight: 500; color: var(--sakya-dark); }
+        .forum-author-info .time { color: var(--text-secondary); font-size: 0.75rem; }
+        .forum-badge {
+            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.72rem;
+        }
+        .badge-answered { background: rgba(74,124,111,0.1); color: #2d6b5e; }
+        .badge-open { background: rgba(201,168,76,0.1); color: #8a7020; }
+        .forum-title {
+            font-family: 'Noto Serif Tibetan', serif; font-size: 1.05rem; color: var(--sakya-dark);
+            margin-bottom: 0.3rem; cursor: pointer;
+        }
+        .forum-title:hover { color: var(--sakya-red); }
+        .forum-title .cn-t { font-family: 'Noto Sans SC', sans-serif; font-size: 0.9rem; color: var(--text-secondary); }
+        .forum-excerpt { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+        .forum-actions { display: flex; gap: 1rem; font-size: 0.82rem; color: var(--text-secondary); }
+
+        /* ===== LIVE STREAM ===== */
+        .live-wrap {
+            max-width: 900px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .live-card {
+            background: white; border-radius: 10px; padding: 1.5rem;
+            border: 1px solid var(--border-color); margin-bottom: 1.2rem;
+            display: flex; gap: 1.2rem; align-items: flex-start;
+        }
+        .live-date {
+            width: 70px; text-align: center; flex-shrink: 0;
+            background: var(--sakya-cream); border-radius: 8px; padding: 0.6rem 0;
+        }
+        .live-date .day { font-size: 1.4rem; font-weight: 700; color: var(--sakya-red); }
+        .live-date .month { font-size: 0.75rem; color: var(--text-secondary); }
+        .live-info { flex: 1; }
+        .live-info h4 { font-family: 'Noto Serif Tibetan', serif; font-size: 1.1rem; color: var(--sakya-dark); }
+        .live-info .live-cn { font-size: 0.9rem; color: var(--text-secondary); }
+        .live-meta { display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); }
+        .live-status {
+            padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; white-space: nowrap;
+        }
+        .live-status.upcoming { background: var(--sakya-cream); color: var(--text-secondary); }
+        .live-status.live { background: var(--sakya-red); color: white; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+
+        /* ===== DASHBOARD ===== */
+        .dashboard-wrap {
+            max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem;
+        }
+        .dash-stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem; margin-bottom: 2rem;
+        }
+        .dash-stat {
+            background: white; border-radius: 10px; padding: 1.2rem;
+            border: 1px solid var(--border-color); text-align: center;
+        }
+        .dash-stat .num { font-size: 1.8rem; font-weight: 700; color: var(--sakya-red); }
+        .dash-stat .lbl { font-size: 0.85rem; color: var(--text-secondary); }
+        .dash-section {
+            background: white; border-radius: 10px; padding: 1.5rem;
+            border: 1px solid var(--border-color); margin-bottom: 1.5rem;
+        }
+        .dash-section h3 {
+            font-family: 'Noto Serif Tibetan', serif; color: var(--sakya-red);
+            margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);
+        }
+        .course-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 0; border-bottom: 1px solid #f0ebe3;
+        }
+        .course-item:last-child { border-bottom: none; }
+        .course-name { font-size: 0.95rem; }
+        .course-progress {
+            display: flex; align-items: center; gap: 0.8rem;
+        }
+        .course-bar {
+            width: 100px; height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden;
+        }
+        .course-bar-fill { height: 100%; background: var(--sakya-red); border-radius: 3px; }
+        .course-pct { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* ===== SEARCH BAR ===== */
+        .search-wrap {
+            max-width: 550px; margin: 0 auto 2rem; display: flex;
+        }
+        .search-input {
+            flex: 1; padding: 0.85rem 1.1rem; border: 2px solid var(--border-color);
+            border-right: none; border-radius: 8px 0 0 8px;
+            font-size: 0.95rem; outline: none;
+        }
+        .search-input:focus { border-color: var(--sakya-blue); }
+        .search-btn {
+            padding: 0.85rem 1.2rem; background: var(--sakya-blue); color: white;
+            border: 2px solid var(--sakya-blue); border-radius: 0 8px 8px 0;
+            cursor: pointer; font-size: 1rem;
+        }
+
+        /* ===== ACCESS CODE MODAL ===== */
+        .access-modal-overlay {
+            display: none; position: fixed; inset: 0; z-index: 5000;
+            background: rgba(0,0,0,0.65); align-items: center; justify-content: center;
+        }
+        .access-modal-overlay.active { display: flex; }
+        .access-modal {
+            background: white; border-radius: 14px; padding: 2.5rem;
+            max-width: 450px; width: 90%; text-align: center;
+            border: 2px solid var(--sakya-red);
+        }
+        .access-modal .lock-icon { font-size: 3rem; color: var(--sakya-red); margin-bottom: 1rem; }
+        .access-modal h3 { font-family: 'Noto Serif Tibetan', serif; margin-bottom: 0.5rem; color: var(--sakya-dark); }
+        .access-modal p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.92rem; }
+        .access-input {
+            width: 100%; padding: 0.9rem; border: 2px solid var(--border-color);
+            border-radius: 6px; font-size: 1.1rem; text-align: center; letter-spacing: 0.3rem;
+            margin-bottom: 1rem; outline: none;
+        }
+        .access-input:focus { border-color: var(--sakya-red); }
+        .access-btn {
+            width: 100%; padding: 0.8rem; background: var(--sakya-red); color: white;
+            border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;
+        }
+        .access-btn:hover { background: #b02d3f; }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--sakya-dark); color: var(--sakya-cream);
+            padding: 3rem 2rem 1rem; margin-top: 3rem;
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col h4 { color: var(--sakya-gold); margin-bottom: 1rem; font-family: 'Noto Serif Tibetan', serif; }
+        .footer-col a {
+            display: block; color: rgba(245,240,232,0.7);
+            text-decoration: none; padding: 0.25rem 0; font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--sakya-gold); }
+        .footer-bottom {
+            text-align: center; padding-top: 2rem; margin-top: 2rem;
+            border-top: 1px solid rgba(201,168,76,0.15);
+            font-size: 0.82rem; color: rgba(245,240,232,0.55);
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--sakya-cream); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--sakya-blue); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero h1 .cn-title { font-size: 1rem; }
+            .main-nav { flex-wrap: wrap; }
+            .nav-link { padding: 0.6rem 0.9rem; font-size: 0.82rem; }
+            .ereader-panes { grid-template-columns: 1fr; }
+            .ereader-divider { display: none; }
+            .level-row { flex-direction: column; }
+            .live-card { flex-direction: column; }
+            .phases-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .header-topbar { flex-wrap: wrap; gap: 0.5rem; }
+            .lang-select-buttons { flex-direction: column; gap: 0.8rem; }
+        }
+
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-<div class="sakya-header">
-    <div class="header-title-tib">ས་སྐྱའི་བཀའ་འབུམ་ཆེན་མོ་རྣམས་ཀྱི་དྲ་ཚིག</div>
-    <div class="header-title-cn">萨迦派诸大善知识文集导航</div>
-    <div class="header-title-en">Sakya School Great Masters' Collected Works</div>
-    <div class="header-subtitle">
-        རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། · Gyalyong Sachen · 嘉样萨千网站
+<!-- LANGUAGE SELECT OVERLAY -->
+<div id="lang-select-overlay">
+    <div class="lang-select-logo">&#x2638;</div>
+    <div class="lang-select-title">དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ།</div>
+    <div class="lang-select-subtitle">萨迦高级佛学院在线平台</div>
+    <div class="lang-select-buttons">
+        <button class="lang-select-btn" onclick="chooseLang('bo')">
+            བོད་སྐད།
+            <span class="cn-label">藏文</span>
+        </button>
+        <button class="lang-select-btn" onclick="chooseLang('zh')">
+            རྒྱ་སྐད།
+            <span class="cn-label">中文</span>
+        </button>
     </div>
 </div>
 
-<div class="nav-bar">
-    <a href="#main">གཙོ་ངོས།</a>
-    <a href="#sakya">ས་སྐྱ།</a>
-    <a href="#ngor">ངོར་ཆེན།</a>
-    <a href="#rong">རོང་སྟོན།</a>
-    <a href="#panchen">པཎ་ཆེན།</a>
-    <a href="#zhuchen">ཞུ་ཆེན།</a>
-    <a href="#loter">བློ་གཏེར།</a>
-    <a href="#platform">སྤྱི་ཚོགས་སྟེགས་བུ།</a>
-</div>
-
-<div class="intro" id="main">
-    <div style="font-size: 24px; margin-bottom: 20px;">
-        རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། གྱི་བཀའ་འབུམ་ཁག་ལ་ཉམས་ལེན་བྱེད་པའི་དྲ་ཚིག
-    </div>
-    <div style="font-size: 18px; color: #666; margin-bottom: 20px;">
-        嘉样萨千网站 · 萨迦派诸大善知识文集浏览指南
-    </div>
-    <div style="font-size: 16px; color: #888; margin-bottom: 30px;">
-        འདི་ནི་རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (Gyalyong Sachen) གྱི་དྲ་ཐོག་མཛོད་ནས་ས་སྐྱའི་བཀའ་འབུམ་ཁག་ལ་ཉམས་ལེན་བྱེད་པར་སྟབས་བདེ་ཡོང་བའི་ཆེད་དུ་བསྐྲུན་པའི་དྲ་ཚིག་ཡིན།
+<!-- ACCESS CODE MODAL -->
+<div class="access-modal-overlay" id="access-modal">
+    <div class="access-modal">
+        <div class="lock-icon">&#x1F512;</div>
+        <h3>གསང་སྔགས་སློབ་རིམ། 密法课程</h3>
+        <p>སློབ་རིམ་འདི་ལ་ལག་འཁྱེར་ཆོག་མཆན་དགོས།<br>此课程需要输入访问密码。</p>
+        <input type="text" class="access-input" id="access-code-input" placeholder="------" maxlength="6">
+        <button class="access-btn" onclick="checkAccessCode()">འགྲོ་ལམ་ཕྱེ་བ། 进入课程</button>
     </div>
 </div>
 
-<div class="highlight-box">
-    <strong>གསལ་བཤད། / 说明：</strong><br><br>
-    དྲ་ཚིག་འདིའི་ནང་དུ་ས་སྐྱའི་གདུང་རབས་ཆེན་པོ་དང་མཁས་གྲུབ་ཆེན་པོ་རྣམས་ཀྱི་བཀའ་འབུམ་དྲུག་ཚུད་ཡོད། སྟེགས་བུ་རེ་རེ་ལ་གནོན་ན་དྲ་ཐག་དེར་ཐད་ཀར་འཇུག་ཐུབ།<br><br>
-    本页面收录了萨迦派六大文集，点击任意卡片即可进入对应网页浏览。
-</div>
-
-<h2 id="sakya">ས་སྐྱ་བཀའ་འབུམ། / 萨迦文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">ས་སྐྱ་བཀའ་འབུམ།</div>
-        <div class="author-name">ས་སྐྱ་གོང་མ་རྣམ་ལྔ།</div>
-        <div class="collection-desc">
-            萨迦五祖文集。包括贡嘎宁波（ཀུན་དགའ་སྙིང་པོ་）、索南孜摩（བསོད་ནམས་རྩེ་མོ་）、扎巴坚赞（གྲགས་པ་རྒྱལ་མཚན་）、萨迦班智达（འཇམ་མགོན་ས་སྐྱ་པཎྜི་ཏ་）、八思巴（བློ་གྲོས་རྒྱལ་མཚན་）等萨迦派祖师的著作。内容涵盖道果、经论注释、仪轨、传记等。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=2643" class="main-link" target="_blank">
-            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="ngor">ངོར་ཆེན་བཀའ་འབུམ། / 鄂钦文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">ངོར་ཆེན་བཀའ་འབུམ།</div>
-        <div class="author-name">ངོར་ཆེན་རྡོ་རྗེ་འཆང་ཀུན་དགའ་བཟང་པོ།</div>
-        <div class="collection-desc">
-            鄂钦·金刚持·贡嘎桑波文集。共四卷，包括道果教授、生起次第与圆满次第修法、萨迦派传承仪轨及各类经论注释。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=4446" class="main-link" target="_blank">
-            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="rong">རོང་སྟོན་གསུང་འབུམ། / 荣顿文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">རོང་སྟོན་གསུང་འབུམ།</div>
-        <div class="author-name">ཤཱཀྱ་རྒྱལ་མཚན་དཔལ་བཟང་པོ།</div>
-        <div class="collection-desc">
-            荣顿·释迦坚赞·华桑波文集。内容包括传记、赞颂、经论注释、生起次第与圆满次第修法教授、显密经论注解等。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=5145" class="main-link" target="_blank">
-            📚 གསུང་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="panchen">པཎ་ཆེན་ཤཱ་མཆོག་གསུང་འབུམ། / 班钦夏莫文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">པཎ་ཆེན་ཤཱ་མཆོག་གསུང་འབུམ།</div>
-        <div class="author-name">པཎ་ཆེན་ཤཱ་མཆོག།</div>
-        <div class="collection-desc">
-            班钦夏莫文集。萨迦派重要祖师的著作合集，包含道果教授、显密经论注释及各类修法仪轨。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=5650" class="main-link" target="_blank">
-            📚 གསུང་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="zhuchen">ཞུ་ཆེན་གསུང་འབུམ། / 主钦文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">ཞུ་ཆེན་གསུང་འབུམ།</div>
-        <div class="author-name">ཞུ་ཆེན་ཚུལ་ཁྲིམས་རིན་ཆེན།</div>
-        <div class="collection-desc">
-            主钦·次成仁钦文集。萨迦派重要学者的著作，内容涵盖上师瑜伽、道果教授、各类修法仪轨及经论注释。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=9210" class="main-link" target="_blank">
-            📚 གསུང་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="loter">བློ་གཏེར་བཀའ་འབུམ། / 洛特丹文集</h2>
-
-<div class="collection-grid">
-    <div class="collection-card">
-        <div class="collection-title">བློ་གཏེར་བཀའ་འབུམ།</div>
-        <div class="author-name">འཇམ་དབྱངས་བློ་གཏེར་དབང་པོ།</div>
-        <div class="collection-desc">
-            绛央洛特丹旺波文集。内容包括因明、中观、般若、阿毗达磨及密宗修法等各类经论注释与教授。
-        </div>
-        <a href="https://www.gyalyongsachen.com/?page_id=10237" class="main-link" target="_blank">
-            📚 བཀའ་འབུམ་ལ་འཇུག་པ།
-        </a>
-    </div>
-</div>
-
-<h2 id="platform">སྤྱི་ཚོགས་སྟེགས་བུ། / 公众平台</h2>
-
-<div class="collection-grid">
-    <div class="collection-card" style="border-top: 5px solid #4caf50; grid-column: 1 / -1;">
-        <div class="collection-title" style="color: #2e7d32;">Sk.大悲利众洲</div>
-        <div class="author-name" style="color: #4caf50;">སྤྱི་ཚོགས་སྟེགས་བུ། / 微信公众平台</div>
-        <div class="collection-desc">
-            རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (Gyalyong Sachen) གྱི་དྲ་ཐག་ཀྲུང་གོའི་ནང་ཁུལ་ནས་ཁ་ཕྱེ་དཀའ་བའི་གནད་དོན་ཡོད་པས། སྤྱི་ཚོགས་སྟེགས་བུ་འདི་ནས་བཀའ་འབུམ་དང་འབྲེལ་བའི་གནས་ཚུད་དང་ཞིབ་འཇུག་གི་ཆ་འཕྲིན་ཁག་ལ་ལྟ་ཐུབ།
-            <br><br>
-            由于嘉样萨千网站在中国内地访问受限，可通过此公众平台获取相关文献资源与研究资讯。
-            <br><br>
-            <strong>སྤྱོད་སྟངས། / 使用方法：</strong><br>
-            1. 微信（WeChat）ནང་དུ་འཛུལ།<br>
-            2. སྤྱི་ཚོགས་སྟེགས་བུ་ཁ་ཐྱོང་དུ "Sk.大悲利众洲" ཞེས་པ་བྲིས་ནས་འཚོལ།<br>
-            3. སྤྱི་ཚོགས་སྟེགས་བུ་དེ་ལ་དོ་ཁུར་བྱས་ནས་གསུང་རབ་ཁག་ལ་ལྟ་ཐུབ།
-        </div>
-        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px;">
-            <div style="font-size: 18px; color: #2e7d32; margin-bottom: 10px;">
-                📱 微信搜索：Sk.大悲利众洲
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-topbar">
+        <div class="header-brand">
+            <div class="brand-icon">&#x2638;</div>
+            <div class="brand-text">
+                <span class="tib">དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ།</span>
+                <span class="cn">萨迦高级佛学院</span>
             </div>
-            <div style="font-size: 16px; color: #555;">
-                འཕྲིན་ཕྲན་ནང་དུ "Sk.大悲利众洲" ཞེས་བྲིས་ནས་འཚོལ་རོགས།
+        </div>
+        <div class="header-actions">
+            <div class="user-progress-chip" id="header-progress">སློབ་གཉེར། ༢༥% | 学习进度 25%</div>
+            <div class="lang-toggle">
+                <button class="lang-toggle-btn active" id="btn-lang-bo" onclick="toggleLang('bo')">བོད།</button>
+                <button class="lang-toggle-btn" id="btn-lang-zh" onclick="toggleLang('zh')">中文</button>
+            </div>
+            <div class="user-avatar">སློབ།</div>
+        </div>
+    </div>
+    <nav class="main-nav">
+        <button class="nav-link active" onclick="showView('home')">
+            གཙོ་ངོས།
+            <span class="cn-label">首页</span>
+        </button>
+        <button class="nav-link" onclick="showView('levels')">
+            སློབ་རིམ།
+            <span class="cn-label">课程</span>
+        </button>
+        <button class="nav-link" onclick="showView('videos')">
+            བརྙན་སློབ།
+            <span class="cn-label">视频</span>
+        </button>
+        <button class="nav-link" onclick="showView('reader')">
+            དཔེ་ཀློག
+            <span class="cn-label">阅藏</span>
+        </button>
+        <button class="nav-link" onclick="showView('exam')">
+            རྒྱུགས་སྤྲོད།
+            <span class="cn-label">考试</span>
+        </button>
+        <button class="nav-link" onclick="showView('cert')">
+            ཕྱག་འཁྱེར།
+            <span class="cn-label">证书</span>
+        </button>
+        <button class="nav-link" onclick="showView('forum')">
+            བགྲོ་གླེང་།
+            <span class="cn-label">论坛</span>
+        </button>
+        <button class="nav-link" onclick="showView('live')">
+            ཐད་གཏོང་།
+            <span class="cn-label">直播</span>
+        </button>
+        <button class="nav-link" onclick="showView('dashboard')">
+            ངོས་སྤྲོད།
+            <span class="cn-label">我的</span>
+        </button>
+    </nav>
+</header>
+
+<!-- ===== HOME VIEW ===== -->
+<div class="view active" id="view-home">
+    <div class="hero">
+        <div class="hero-content">
+            <h1>
+                དཔལ་ལྡན་ས་སྐྱ་པའི་གསུང་རབས་རྣམས་དྲ་ཚིག་ལམ་ནས་སློབ་གཉེར།
+                <span class="cn-title">萨迦派经典在线学院 · 九级修学体系</span>
+            </h1>
+            <p class="hero-desc">
+                ནང་ཆོས་དོན་གཉེར་ཅན་རྣམས་ཀྱིས་རང་གི་ནང་ཆོས་ལ་སློབ་པའི་རིམ་པ་ལྟར་སློབ་གཉེར་བྱ་ཆོག་པའི་དྲ་སྟེགས།<br>
+                为佛教修行者提供按次第学习萨迦派经典的在线平台
+            </p>
+            <div class="hero-btns">
+                <button class="btn btn-primary" onclick="showView('levels')">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+                <button class="btn btn-outline" onclick="showView('dashboard')">ངོས་སྤྲོད་ལ་ལྟ་བ། 个人中心</button>
             </div>
         </div>
     </div>
+
+    <div class="section-head">
+        <h2>སློབ་གཉེར་དུས་རིམ་གསུམ།</h2>
+        <span class="cn-title">三阶修学体系</span>
+        <p class="desc">སློབ་རིམ་དགུ་པོ་རྨང་གཞི་དང་མཚན་ཉིད། གསང་སྔགས་གསུམ་ལ་དབྱེ་བ། 九级课程分为基础、法相、密续三阶</p>
+    </div>
+
+    <div class="phases-grid">
+        <div class="phase-card" onclick="showView('levels')">
+            <div class="phase-header phase1">
+                <h3>དུས་རིམ་དང་པོ། རྨང་གཞི།</h3>
+                <span class="phase-cn">初级阶段：基础与共明</span>
+                <span class="phase-range">སློབ་རིམ་༡–༣</span>
+            </div>
+            <div class="phase-body">
+                <p>བོད་ཡིག་ཀློག་སྟངས། སུམ་རྟགས། སྙན་ངག སྐར་རྩིས། ས་སྐྱ་ལེགས་བཤད་སོགས་སློབ་གཉེར་བྱེད་པ།<br>藏文读写、因明、诗学、历算、萨迦格言等基础学科</p>
+                <div class="phase-stats">
+                    <div class="p-stat"><div class="num">༡༥</div><div class="lbl">经典</div></div>
+                    <div class="p-stat"><div class="num">༤༨</div><div class="lbl">课时</div></div>
+                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">测验</div></div>
+                </div>
+                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+            </div>
+        </div>
+
+        <div class="phase-card" onclick="showView('levels')">
+            <div class="phase-header phase2">
+                <h3>དུས་རིམ་གཉིས་པ། མཚན་ཉིད།</h3>
+                <span class="phase-cn">中级阶段：显教法相</span>
+                <span class="phase-range">སློབ་རིམ་༤–༦</span>
+            </div>
+            <div class="phase-body">
+                <p>ཚད་མ་རིག་པ། དབུ་མ། ཕར་ཕྱིན། མངོན་པ། འདུལ་བ། སྡོམ་གསུམ་སོགས་སློབ་གཉེར་བྱེད་པ།<br>量理、中观、般若、俱舍、戒律、三戒分别等</p>
+                <div class="phase-stats">
+                    <div class="p-stat"><div class="num">༢༢</div><div class="lbl">经典</div></div>
+                    <div class="p-stat"><div class="num">༧༢</div><div class="lbl">课时</div></div>
+                    <div class="p-stat"><div class="num">༢༤</div><div class="lbl">测验</div></div>
+                </div>
+                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+            </div>
+        </div>
+
+        <div class="phase-card" onclick="showView('levels')">
+            <div class="phase-header phase3">
+                <h3>དུས་རིམ་གསུམ་པ། གསང་སྔགས།</h3>
+                <span class="phase-cn">高级阶段：密续与高阶</span>
+                <span class="phase-range">སློབ་རིམ་༧–༩</span>
+            </div>
+            <div class="phase-body">
+                <p>རྒྱུད་སྡེ་སྤྱི་རྣམ། ཀྱཻ་རྡོ་རྗེ། ལམ་འབྲས། དཀྱིལ་འཁོར་གྱི་ཆོ་ག་སོགས་ཟབ་ཆོས་སློབ་གཉེར་བྱེད་པ།<br>续部总论、喜金刚、道果、坛城仪轨等密法深义</p>
+                <div class="phase-stats">
+                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">经典</div></div>
+                    <div class="p-stat"><div class="num">༦༠</div><div class="lbl">课时</div></div>
+                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">测验</div></div>
+                </div>
+                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="highlight-box" style="margin-top: 50px;">
-    <strong>དྲ་ཚིག་འདི་བེད་སྤྱོད་བྱེད་སྟངས། / 使用指南：</strong><br><br>
-    1. སྟེགས་བུ་རེ་རེ་ལ་གནོན་ན་དྲ་ཐག་དེར་ཐད་ཀར་འཇུག་ཐུབ། 点击卡片即可进入对应网页。<br>
-    2. དྲ་ཐག་ཚང་མ་གསར་བསྐྲུན་གྱི་ཐོག་ནས་འབྱེད་པ་ཡིན། 所有链接均在新窗口打开。<br>
-    3. གལ་ཏེ་དྲ་ཐག་མུ་མཐུད་ནས་མ་རྙེད་པ་ཞིག་ཡོད་ན། དྲ་ཐག་གཙོ་ངོས་ནས་འཚོལ་རོགས། 若找不到具体链接，请从总页面进入查找。<br>
-    4. དྲ་ཚིག་འདི་ཉམས་ལེན་བྱེད་བཞིན་དུ་རྒྱུན་དུ་བཟོ་བཅོས་དང་ཁ་སྣོན་བྱེད་རྒྱུ་ཡིན། 本页面将持续更新完善。
+<!-- ===== LEVELS VIEW ===== -->
+<div class="view" id="view-levels">
+    <div class="section-head">
+        <h2>སློབ་རིམ་དགུའི་ནང་དོན།</h2>
+        <span class="cn-title">九级课程内容</span>
+    </div>
+    <div class="levels-container" id="levels-container">
+        <!-- Dynamically populated -->
+    </div>
 </div>
 
-<div style="text-align: center; margin-top: 50px; padding: 20px; color: #888; font-size: 16px; border-top: 1px solid #ddd;">
-    དྲ་ཚིག་འདི་རྒྱལ་ཡོངས་ས་ཆེན་དྲ་བ། (www.gyalyongsachen.com) གྱི་དྲ་ཐོག་མཛོད་ལ་གཞིགས་ནས་བསྐྲུན་པ་ཡིན།<br>
-    来源：嘉样萨千网站 | 为修学萨迦派诸大善知识文集而制作
+<!-- ===== VIDEOS VIEW ===== -->
+<div class="view" id="view-videos">
+    <div class="section-head">
+        <h2>བརྙན་ལམ་སློབ་ཁྲིད།</h2>
+        <span class="cn-title">视频教学</span>
+    </div>
+    <div class="video-player-wrap">
+        <div class="video-stage" id="video-stage">
+            <div class="play-btn" onclick="playVideo()">&#x25B6;</div>
+        </div>
+        <div class="video-info">
+            <h3 id="video-title">སྐྱབས་འགྲོའི་བཤད་ཁྲིད། ༼༡༽</h3>
+            <div class="video-cn" id="video-cn-title">皈依讲解（一）</div>
+            <div class="video-meta">
+                <span id="video-duration">&#x23F1; ༤༥ སྐར་མ། 45分钟</span>
+                <span id="video-level">&#x1F393; སློབ་རིམ་༡ 一级</span>
+                <span id="video-teacher">&#x1F464; མཁན་པོ་འཇམ་དབྱངས། 姜央堪布</span>
+            </div>
+        </div>
+        <div class="video-controls">
+            <button class="v-control active" onclick="loadVideo(0)">སྐྱབས་འགྲོ། 皈依</button>
+            <button class="v-control" onclick="loadVideo(1)">བླ་མའི་རྣལ་འབྱོར། 上师瑜伽</button>
+            <button class="v-control" onclick="loadVideo(2)">ཚད་མ། 量理</button>
+            <button class="v-control" onclick="loadVideo(3)">དབུ་མ། 中观</button>
+            <button class="v-control" onclick="loadVideo(4)">ཕྱག་ཆེན། 大手印</button>
+            <button class="v-control locked" onclick="promptAccess()">&#x1F512; ལམ་འབྲས། 道果</button>
+        </div>
+    </div>
 </div>
 
+<!-- ===== READER VIEW ===== -->
+<div class="view" id="view-reader">
+    <div class="section-head">
+        <h2>དྲ་ཐོག་དཔེ་དེབ།</h2>
+        <span class="cn-title">在线阅藏</span>
+    </div>
+    <div class="ereader-wrap">
+        <div class="ereader-toolbar">
+            <div>
+                <strong>གཡོན། བོད་ཡིག་རྩ་གཞུང་།</strong>
+                <span style="color:var(--text-secondary);font-size:0.85rem"> | 左：藏文原文</span>
+            </div>
+            <div style="text-align:right">
+                <strong>གཡས། རྒྱ་ཡིག་འགྲེལ་པ།</strong>
+                <span style="color:var(--text-secondary);font-size:0.85rem"> | 右：中文释译</span>
+            </div>
+        </div>
+        <div class="ereader-panes">
+            <div class="ereader-pane tibetan" id="ereader-tib">
+                <h4>སྐྱབས་འགྲོ་ཡན་ལག་བདུན་པ།</h4>
+                <p>ན་མོ་གུ་རུ་བྷྱཿ བླ་མ་དམ་པ་རྣམས་ལ་ཕྱག་འཚལ་ལོ།</p>
+                <p>སྐྱབས་འགྲོ་ཡན་ལག་བདུན་པ་ནི། དང་པོ་སྐྱབས་འགྲོ་དང་། གཉིས་པ་བྱང་ཆུབ་ཀྱི་སེམས། གསུམ་པ་བདག་མེད་མོས་པ། བཞི་པ་མཆོད་པ། ལྔ་པ་སྡིག་བཤགས། དྲུག་པ་བསོད་ནམས་ལ་རྗེས་སུ་ཡི་རང་བ། བདུན་པ་བསྔོ་བ་དང་གསོལ་འདེབས་ཡིན་ནོ།།</p>
+                <p style="margin-top:1rem">འདི་ལ་དང་པོ་སྐྱབས་འགྲོ་ནི། སྐྱབས་ཀྱི་གནས་དཀོན་མཆོག་གསུམ་ལ་སྐྱབས་སུ་འགྲོ་བ་སྟེ། སངས་རྒྱས་ལ་སྐྱབས་སུ་སོང་བས་ནི་བླ་མེད་བྱང་ཆུབ་ཀྱི་འབྲས་བུ་ཐོབ་པའི་ལམ་སྟོན་པ་དང་།</p>
+            </div>
+            <div class="ereader-divider"></div>
+            <div class="ereader-pane chinese" id="ereader-cn">
+                <h4>七支皈依文</h4>
+                <p>南无格日贝。顶礼诸位殊胜上师。</p>
+                <p>七支皈依者：第一皈依，第二发菩提心，第三修无我见，第四供养，第五忏悔，第六随喜功德，第七回向与祈祷。</p>
+                <p style="margin-top:1rem">此中第一皈依者，谓皈依法宝三宝之处，皈依佛者，即为开示获得无上菩提果位之道。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== EXAM VIEW ===== -->
+<div class="view" id="view-exam">
+    <div class="section-head">
+        <h2>དྲ་ཐོག་རྒྱུགས་སྤྲོད།</h2>
+        <span class="cn-title">在线考试</span>
+    </div>
+    <div class="exam-wrap">
+        <div class="exam-card" id="exam-card">
+            <div id="exam-start">
+                <div class="exam-result-box">
+                    <div style="font-size:3.5rem;margin-bottom:1rem">&#x1F4DD;</div>
+                    <h3 style="margin-bottom:0.8rem;font-family:'Noto Serif Tibetan',serif">དྲ་ཐོག་རྒྱུགས་སྤྲོད་འགོ་བཙུགས།</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:2rem">
+                        སློབ་རིམ་རེ་རེའི་མཇུག་ཏུ་རྒྱུགས་སྤྲོད་བྱས་ཏེ་སློབ་རིམ་རྗེས་མར་འཕར་ཐུབ།<br>
+                        每级课程结束后可参加考试，通过后晋级下一级。
+                    </p>
+                    <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap">
+                        <button class="btn btn-primary" onclick="startExam('beginner')">སློབ་རིམ་༡–༣ 初级考试</button>
+                        <button class="btn btn-gold" onclick="startExam('intermediate')">སློབ་རིམ་༤–༦ 中级考试</button>
+                        <button class="btn btn-outline" style="color:var(--sakya-dark);border-color:var(--sakya-red)" onclick="promptAccessExam()">སློབ་རིམ་༧–༩ 高级考试</button>
+                    </div>
+                </div>
+            </div>
+            <div id="exam-question-box" style="display:none">
+                <div class="exam-progress">
+                    <span id="exam-q-num">༡</span>
+                    <div class="exam-progress-bar"><div class="exam-progress-fill" id="exam-fill" style="width:0%"></div></div>
+                    <span id="exam-q-total">༥</span>
+                </div>
+                <div class="exam-q-text" id="exam-q-text"></div>
+                <div class="exam-options" id="exam-options"></div>
+            </div>
+            <div id="exam-result-box" style="display:none">
+                <div class="exam-result-box">
+                    <div class="exam-score-num" id="exam-score">༨༠%</div>
+                    <h3 style="margin:1rem 0;font-family:'Noto Serif Tibetan',serif">རྒྱུགས་སྤྲོད་མཇུག་འབྲས། 考试结果</h3>
+                    <p id="exam-feedback" style="color:var(--text-secondary);margin-bottom:2rem"></p>
+                    <button class="btn btn-primary" onclick="resetExam()">སླར་བསྐྱར་རྒྱུགས་སྤྲོད། 重新考试</button>
+                    <button class="btn btn-outline" style="color:var(--sakya-dark);margin-left:0.8rem" onclick="showView('cert')">ཕྱག་འཁྱེར་ལ་ལྟ་བ། 查看证书</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CERTIFICATES VIEW ===== -->
+<div class="view" id="view-cert">
+    <div class="section-head">
+        <h2>དྲ་ཐོག་ཕྱག་འཁྱེར།</h2>
+        <span class="cn-title">在线证书</span>
+    </div>
+    <div class="cert-grid">
+        <div class="cert-card">
+            <div class="cert-icon">&#x1F3C6;</div>
+            <h4>རྨང་གཞིའི་སློབ་རིམ་ཚར་ཚད།</h4>
+            <div class="cert-cn">基础课程结业证书</div>
+            <span class="cert-status completed">ལེགས་གྲུབ། 已完成</span>
+        </div>
+        <div class="cert-card">
+            <div class="cert-icon">&#x1F3C6;</div>
+            <h4>མཚན་ཉིད་ཀྱི་སློབ་རིམ་ཚར་ཚད།</h4>
+            <div class="cert-cn">法相课程结业证书</div>
+            <span class="cert-status pending">བསྒྲུབ་བཞིན་པ། 进行中</span>
+        </div>
+        <div class="cert-card locked">
+            <div class="cert-icon">&#x1F512;</div>
+            <h4>གསང་སྔགས་ཀྱི་སློབ་རིམ་ཚར་ཚད།</h4>
+            <div class="cert-cn">密续课程结业证书</div>
+            <span class="cert-status locked">སྒོ་བརྒྱབས་ཡོད། 已锁定</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FORUM VIEW ===== -->
+<div class="view" id="view-forum">
+    <div class="section-head">
+        <h2>དྲི་བ་དྲིས་ལན་དང་བགྲོ་གླེང་།</h2>
+        <span class="cn-title">问答与论坛</span>
+    </div>
+    <div class="forum-wrap">
+        <div class="forum-post">
+            <div class="forum-post-header">
+                <div class="forum-author">
+                    <div class="forum-avatar">སློབ།</div>
+                    <div class="forum-author-info">
+                        <div class="name">སློབ་མ་དཀོན་མཆོག 贡秋学员</div>
+                        <div class="time">༢༠༢༦-༠༥-༢༠ | 2026-05-20</div>
+                    </div>
+                </div>
+                <span class="forum-badge badge-answered">ལན་ཐོབ། 已回答</span>
+            </div>
+            <div class="forum-title">
+                སྐྱབས་འགྲོ་ཡང་ཡང་བྱེད་དགོས་དོན་ཅི་ཡིན།
+                <span class="cn-t">为什么需要反复修皈依？</span>
+            </div>
+            <div class="forum-excerpt">
+                སྐྱབས་འགྲོ་ཡང་ཡང་བྱེད་པས་ཕན་ཡོན་གང་དག་ཡོད། གཅིག་བྱས་ཆོག་གམ།...
+                反复修皈依有何功德？修一次就够了吗？...
+            </div>
+            <div class="forum-actions">
+                <span>&#x1F4AC; ལན་ ༣ 条回复</span>
+                <span>&#x1F441; ལྟ་ཀློག་ ༡༢༨ 浏览 128</span>
+            </div>
+        </div>
+
+        <div class="forum-post">
+            <div class="forum-post-header">
+                <div class="forum-author">
+                    <div class="forum-avatar">རྒྱ།</div>
+                    <div class="forum-author-info">
+                        <div class="name">རྒྱ་རིགས་སློབ་མ། 汉族学员</div>
+                        <div class="time">༢༠༢༦-༠༥-༢༥ | 2026-05-25</div>
+                    </div>
+                </div>
+                <span class="forum-badge badge-open">དྲིས་ཡོད། 待回答</span>
+            </div>
+            <div class="forum-title">
+                དབུ་མ་རང་རྒྱུད་པ་དང་ཐལ་འགྱུར་པའི་ཁྱད་པར།
+                <span class="cn-t">自续中观与应成中观的区别</span>
+            </div>
+            <div class="forum-excerpt">
+                དབུ་མ་རང་རྒྱུད་པ་དང་ཐལ་འགྱུར་པའི་ལྟ་གྲུབ་ཀྱི་ཁྱད་པར་གཙོ་བོ་གང་ཡིན།...
+                自续派与应成派的主要见解区别是什么？...
+            </div>
+            <div class="forum-actions">
+                <span>&#x1F4AC; ལན་ ༠ 条回复</span>
+                <span>&#x1F441; ལྟ་ཀློག་ ༨༧ 浏览 87</span>
+            </div>
+        </div>
+
+        <div class="forum-post">
+            <div class="forum-post-header">
+                <div class="forum-author">
+                    <div class="forum-avatar">ལོ།</div>
+                    <div class="forum-author-info">
+                        <div class="name">ལོ་ཙཱ་བ་ཆེན་མོ། 大译师</div>
+                        <div class="time">༢༠༢༦-༠༥-༢༢ | 2026-05-22</div>
+                    </div>
+                </div>
+                <span class="forum-badge badge-answered">ལན་ཐོབ། 已回答</span>
+            </div>
+            <div class="forum-title">
+                རྒྱ་ཡིག་གི་དྲི་བ་རྣམས་བོད་ཡིག་ཏུ་བསྒྱུར་ནས་མཁན་པོ་ལ་སྤྱན་འབུལ་ཞུ་བ།
+                <span class="cn-t">关于中文问题翻译后呈报堪布的说明</span>
+            </div>
+            <div class="forum-excerpt">
+                རྒྱ་ཡིག་གི་དྲི་བ་རྣམས་ལོ་ཙཱ་བས་བོད་ཡིག་ཏུ་བསྒྱུར་ནས་མཁན་པོ་རྣམས་ལ་སྤྱན་འབུལ་ཞུ་བར་བྱེད་པ་ཡིན།...
+                中文问题由译师翻译为藏文后呈报堪布解答...
+            </div>
+            <div class="forum-actions">
+                <span>&#x1F4AC; ལན་ ༥ 条回复</span>
+                <span>&#x1F441; ལྟ་ཀློག་ ༢༥༦ 浏览 256</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== LIVE STREAM VIEW ===== -->
+<div class="view" id="view-live">
+    <div class="section-head">
+        <h2>ཐད་གཏོང་སློབ་ཁྲིད།</h2>
+        <span class="cn-title">直播教学</span>
+    </div>
+    <div class="live-wrap">
+        <div class="live-card">
+            <div class="live-date">
+                <div class="day">༢༨</div>
+                <div class="month">ཟླ་ ༥ 五月</div>
+            </div>
+            <div class="live-info">
+                <h4>དོགས་གཅོད་ཐད་གཏོང་། སྐྱབས་འགྲོའི་སྐོར་གྱི་དྲི་བ་རྣམས།</h4>
+                <div class="live-cn">在线答疑：关于皈依的诸问题</div>
+                <div class="live-meta">
+                    <span>&#x1F550; ༢༠:༠༠ (བོད་ཆུ་ཚོད་) 北京时间 20:00</span>
+                    <span>&#x1F464; མཁན་པོ་འཇམ་དབྱངས། 姜央堪布</span>
+                </div>
+            </div>
+            <span class="live-status upcoming">མ་འོངས། 即将开始</span>
+        </div>
+
+        <div class="live-card">
+            <div class="live-date">
+                <div class="day">༣༠</div>
+                <div class="month">ཟླ་ ༥ 五月</div>
+            </div>
+            <div class="live-info">
+                <h4>དབུ་མ་འཇུག་པའི་ལེའུ་དྲུག་པའི་བཤད་ཁྲིད།</h4>
+                <div class="live-cn">《入中论》第六品讲解</div>
+                <div class="live-meta">
+                    <span>&#x1F550; ༡༩:༣༠ (བོད་ཆུ་ཚོད་) 北京时间 19:30</span>
+                    <span>&#x1F464; དགེ་བཤེས་ཐུབ་བསྟན། 土登格西</span>
+                </div>
+            </div>
+            <span class="live-status upcoming">མ་འོངས། 即将开始</span>
+        </div>
+
+        <div class="live-card">
+            <div class="live-date">
+                <div class="day">༢༥</div>
+                <div class="month">ཟླ་ ༥ 五月</div>
+            </div>
+            <div class="live-info">
+                <h4>ས་སྐྱ་ལེགས་བཤད་ཀྱི་དང་པོ།</h4>
+                <div class="live-cn">《萨迦格言》第一品</div>
+                <div class="live-meta">
+                    <span>&#x1F550; ༡༤:༠༠ (བོད་ཆུ་ཚོད་) 北京时间 14:00</span>
+                    <span>&#x1F464; མཁན་པོ་བསོད་ནམས། 索南堪布</span>
+                </div>
+            </div>
+            <span class="live-status live">&#x1F534; ཐད་གཏོང་བྱེད་བཞིན་པ། 直播中</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== DASHBOARD VIEW ===== -->
+<div class="view" id="view-dashboard">
+    <div class="section-head">
+        <h2>ང་ཡི་སློབ་གཉེར།</h2>
+        <span class="cn-title">我的学习</span>
+    </div>
+    <div class="dashboard-wrap">
+        <div class="dash-stats">
+            <div class="dash-stat"><div class="num">༢</div><div class="lbl">སློབ་རིམ། 在学等级</div></div>
+            <div class="dash-stat"><div class="num">༡༢</div><div class="lbl">བརྙན་ལམ། 已看课时</div></div>
+            <div class="dash-stat"><div class="num">༨</div><div class="lbl">རྒྱུགས་སྤྲོད། 已考试</div></div>
+            <div class="dash-stat"><div class="num">༡</div><div class="lbl">ཕྱག་འཁྱེར། 证书</div></div>
+            <div class="dash-stat"><div class="num">༣</div><div class="lbl">དྲི་བ། 提问数</div></div>
+        </div>
+
+        <div class="dash-section">
+            <h3>སློབ་ཚན་གྱི་འཕྲིན། 课程进度</h3>
+            <div class="course-item">
+                <div class="course-name">སྐྱབས་འགྲོའི་བཤད་ཁྲིད། 皈依讲解</div>
+                <div class="course-progress">
+                    <div class="course-bar"><div class="course-bar-fill" style="width:100%"></div></div>
+                    <span class="course-pct">༡༠༠%</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-name">བླ་མའི་རྣལ་འབྱོར། 上师瑜伽</div>
+                <div class="course-progress">
+                    <div class="course-bar"><div class="course-bar-fill" style="width:80%"></div></div>
+                    <span class="course-pct">༨༠%</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-name">སྤྱོད་འཇུག 入菩萨行论</div>
+                <div class="course-progress">
+                    <div class="course-bar"><div class="course-bar-fill" style="width:45%"></div></div>
+                    <span class="course-pct">༤༥%</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-name">ཚད་མ་རིགས་གཏེར། 量理宝藏论</div>
+                <div class="course-progress">
+                    <div class="course-bar"><div class="course-bar-fill" style="width:10%"></div></div>
+                    <span class="course-pct">༡༠%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-section">
+            <h3>རྒྱུགས་སྤྲོད་མཇུག་འབྲས། 考试记录</h3>
+            <div class="course-item">
+                <div class="course-name">སློབ་རིམ་༡ ཚད་ལེན། 一级测试</div>
+                <span style="color:#4a7c6f;font-weight:600">འཕྲོད། 通过 (༩༢%)</span>
+            </div>
+            <div class="course-item">
+                <div class="course-name">སློབ་རིམ་༢ ཚད་ལེན། 二级测试</div>
+                <span style="color:#4a7c6f;font-weight:600">འཕྲོད། 通过 (༨༥%)</span>
+            </div>
+            <div class="course-item">
+                <div class="course-name">སློབ་རིམ་༣ ཚད་ལེན། 三级测试</div>
+                <span style="color:var(--sakya-gold);font-weight:600">སྒྲུབ་བཞིན་པ། 进行中</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>དཔལ་ས་སྐྱ། 萨迦</h4>
+            <p style="color:rgba(245,240,232,0.7);font-size:0.88rem">
+                དཔལ་ལྡན་ས་སྐྱ་པའི་གསུང་རབས་རྣམས་དྲ་ཚིག་ལམ་ནས་སློབ་གཉེར་བྱེད་པའི་དྲ་སྟེགས།<br>
+                萨迦派经典在线学习平台
+            </p>
+        </div>
+        <div class="footer-col">
+            <h4>སློབ་གཉེར། 学习</h4>
+            <a href="#" onclick="showView('levels')">སློབ་རིམ། 课程</a>
+            <a href="#" onclick="showView('videos')">བརྙན་སློབ། 视频</a>
+            <a href="#" onclick="showView('reader')">དཔེ་ཀློག 阅藏</a>
+            <a href="#" onclick="showView('exam')">རྒྱུགས་སྤྲོད། 考试</a>
+        </div>
+        <div class="footer-col">
+            <h4>རོགས་རམ། 帮助</h4>
+            <a href="#" onclick="showView('forum')">དྲི་བ་དྲི་ལན། 问答</a>
+            <a href="#" onclick="showView('live')">ཐད་གཏོང་། 直播</a>
+            <a href="#">འབྲེལ་བ་བྱེད་ས། 联系我们</a>
+        </div>
+        <div class="footer-col">
+            <h4>འབྲེལ་ཡོད། 相关链接</h4>
+            <a href="#">དཔལ་ས་སྐྱའི་དགོན་པ། 萨迦寺</a>
+            <a href="#">ས་སྐྱ་གོང་མ། 萨迦法王</a>
+            <a href="#">ས་སྐྱའི་མཁས་པ། 萨迦学者</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&#xA9; ༢༠༢༦ དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ། 萨迦高级佛学院 | སྲུང་སྐྱོབ་བྱས་ཡོད། 版权所有</p>
+    </div>
+</footer>
+
+<script>
+// ===== DATA =====
+const levelsData = [
+    { num: '༡', cnNum: '1', title: 'བོད་ཡིག་ཀློག་སྟངས་དང་ཡིག་གཟུགས།', cn: '藏文读写与书法', desc: 'བོད་ཡིག་གི་གཞི་རྩའི་ཡི་གེ་དང་སྦྱོར་ཀླག འབྲུ་ཚོལ། རྒྱུན་ཆགས་ཆོས་སྤྱོད་ཀྱི་ངག་འདོན་སོགས། 藏文基础字母、拼读、诵经及日常法事念诵', phase: 1, locked: false },
+    { num: '༢', cnNum: '2', title: 'སུམ་རྟགས་དག་གསུམ། རྟགས་རིགས་བློ་རིགས།', cn: '三十颂·音势论·因明', desc: 'སུམ་རྟགས་དང་སྡེབ་སྦྱོར་གྱི་རྩ་བ། རྟགས་རིགས་དང་བློ་རིགས་ཀྱི་རྨང་གཞི། 文法三十颂与诗学、逻辑学基础', phase: 1, locked: false },
+    { num: '༣', cnNum: '3', title: 'སྙན་ངག་དང་སྐར་རྩིས། ས་སྐྱ་ལེགས་བཤད།', cn: '诗学·历算·萨迦格言', desc: 'སྙན་ངག་མེ་ལོང་། རྩིས་ཀྱི་སྟེགས། ས་སྐྱ་ལེགས་བཤད་ཀྱི་འགྲེལ་པ། 诗学明镜、历算、萨迦格言释', phase: 1, locked: false },
+    { num: '༤', cnNum: '4', title: 'ཚད་མ་རིག་པ། ཕར་ཕྱིན།', cn: '量理·般若', desc: 'ཚད་མ་རིགས་གཏེར་དང་འགྲེལ་པ། མངོན་རྟོགས་རྒྱན་གྱི་སྐབས་དང་པོ་ནས་བདུན་པའི་བར། 量理宝藏论释、现观庄严论第一至七品', phase: 2, locked: false },
+    { num: '༥', cnNum: '5', title: 'དབུ་མ། མངོན་པ།', cn: '中观·俱舍', desc: 'དབུ་མ་འཇུག་པ་དང་དབུ་མ་རྩ་ཤེས། མངོན་པ་མཛོད་དང་ཀུན་ལས་བཏུས་པ། 入中论、中观根本慧论、俱舍论、阿毗达磨集论', phase: 2, locked: false },
+    { num: '༦', cnNum: '6', title: 'འདུལ་བ། སྡོམ་གསུམ་རབ་དབྱེ།', cn: '戒律·三戒分别', desc: 'འདུལ་བ་མདོ་རྩ་བ་དང་འགྲེལ་པ། སྡོམ་གསུམ་རབ་དབྱེ་དང་དགོངས་གཅིག་གི་སྐོར། 戒律本论及注释、三戒分别论及宗旨', phase: 2, locked: false },
+    { num: '༧', cnNum: '7', title: 'རྒྱུད་སྡེ་སྤྱི་རྣམ། ལྗོན་ཤིང་ཆེན་མོ།', cn: '续部总论·大树论', desc: 'བསོད་ནམས་རྩེ་མོའི་རྒྱུད་སྡེ་སྤྱི་རྣམ། ལྗོན་ཤིང་ཆེན་མོའི་འགྲེལ་པ། 续部总论、大树论释', phase: 3, locked: true },
+    { num: '༨', cnNum: '8', title: 'ཀྱཻ་རྡོ་རྗེའི་རྒྱུད་འགྲེལ། དཀྱིལ་ཆོག', cn: '喜金刚续释·坛城仪轨', desc: 'ཀྱཻ་རྡོ་རྗེའི་རྒྱུད་ཀྱི་འགྲེལ་པ། དཀྱིལ་འཁོར་གྱི་ཆོ་ག་དང་སྒྲུབ་ཐབས། 喜金刚续注释、坛城仪轨与成就法', phase: 3, locked: true },
+    { num: '༩', cnNum: '9', title: 'ལམ་འབྲས་ཆེན་མོ།', cn: '大道果法', desc: 'སྣང་གསུམ་དང་རྒྱུད་གསུམ་གྱི་བཤད་ཁྲིད། ལམ་འབྲས་བུ་དང་བཅས་པའི་གཞུང་ཤིང་། 三现分、三续论讲解、大道果根本论', phase: 3, locked: true },
+];
+
+const videos = [
+    { title: 'སྐྱབས་འགྲོའི་བཤད་ཁྲིད། ༼༡༽', cn: '皈依讲解（一）', dur: '༤༥ སྐར་མ། 45分钟', level: 'སློབ་རིམ་༡ 一级', teacher: 'མཁན་པོ་འཇམ་དབྱངས། 姜央堪布' },
+    { title: 'བླ་མའི་རྣལ་འབྱོར་གྱི་ངག་འདོན་འགྲེལ་པ།', cn: '上师瑜伽念诵释', dur: '༣༠ སྐར་མ། 30分钟', level: 'སློབ་རིམ་༡ 一级', teacher: 'མཁན་པོ་བསོད་ནམས། 索南堪布' },
+    { title: 'ཚད་མ་རིགས་གཏེར་གྱི་དང་པོ།', cn: '量理宝藏论（一）', dur: '༦༠ སྐར་མ། 60分钟', level: 'སློབ་རིམ་༤ 四级', teacher: 'དགེ་བཤེས་ཐུབ་བསྟན། 土登格西' },
+    { title: 'དབུ་མ་འཇུག་པའི་ལེའུ་དྲུག་པ།', cn: '入中论第六品', dur: '༥༥ སྐར་མ། 55分钟', level: 'སློབ་རིམ་༥ 五级', teacher: 'དགེ་བཤེས་ཐུབ་བསྟན། 土登格西' },
+    { title: 'ཕྱག་ཆེན་སྨོན་ལམ་གྱི་འགྲེལ་པ།', cn: '大手印愿文释', dur: '༥༠ སྐར་མ། 50分钟', level: 'སློབ་རིམ་༦ 六级', teacher: 'མཁན་པོ་འཇམ་དབྱངས། 姜央堪布' },
+    { title: 'ལམ་འབྲས་ཀྱི་སྣང་གསུམ་ནང་གི་སྣང་སུམ་པ།', cn: '道果三现分中的现分', dur: '༩༠ སྐར་མ། 90分钟', level: 'སློབ་རིམ་༩ 九级', teacher: 'མཁན་རིན་པོ་ཆེ། 堪布仁波切', locked: true },
+];
+
+const examQuestions = {
+    beginner: [
+        { q: 'སྐྱབས་འགྲོའི་ཡུལ་གསུམ་གང་ཡིན།', cnQ: '皈依三宝是指哪三宝？', opts: [
+            { t: 'སངས་རྒྱས། ཆོས། དགེ་འདུན།', cn: '佛、法、僧', correct: true },
+            { t: 'བླ་མ། ཡི་དམ། ཆོས་སྐྱོང་།', cn: '上师、本尊、护法', correct: false },
+            { t: 'ཕ་མ། བླ་མ། སངས་རྒྱས།', cn: '父母、上师、佛', correct: false }
+        ]},
+        { q: 'སྤྱོད་འཇུག་གི་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《入菩萨行论》的作者是谁？', opts: [
+            { t: 'ཞི་བ་ལྷ།', cn: '寂天菩萨', correct: true },
+            { t: 'ས་ཐལ་གྱི་བུ།', cn: '龙树菩萨', correct: false },
+            { t: 'བྱམས་པ།', cn: '弥勒菩萨', correct: false }
+        ]},
+        { q: 'བྱང་ཆུབ་ཀྱི་སེམས་གཉིས་སུ་དབྱེ་ན་གང་ཡིན།', cnQ: '菩提心分为哪两种？', opts: [
+            { t: 'སྨོན་སེམས་དང་འཇུག་སེམས།', cn: '愿菩提心与行菩提心', correct: true },
+            { t: 'རྒྱུའི་སེམས་དང་འབྲས་བུའི་སེམས།', cn: '因心与果心', correct: false },
+            { t: 'ཐེག་ཆེན་དང་ཐེག་དམན།', cn: '大乘与小乘', correct: false }
+        ]}
+    ],
+    intermediate: [
+        { q: 'ས་སྐྱ་པའི་གྲུབ་མཐའ་གཙོ་བོ་གང་ཡིན།', cnQ: '萨迦派主要宗义是什么？', opts: [
+            { t: 'དབུ་མ།', cn: '中观', correct: false },
+            { t: 'རྣམ་འབྱེད་ཀྱི་གྲུབ་མཐའ།', cn: '唯识宗义', correct: false },
+            { t: 'སྔ་ཕྱི་གཉིས་ཀར་དབུ་མ་ལ་རྟེན།', cn: '前后皆依中观', correct: true }
+        ]},
+        { q: 'ཚད་མ་རིགས་གཏེར་གྱི་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《量理宝藏论》的作者是谁？', opts: [
+            { t: 'ས་སྐྱ་པཎྜི་ཏ།', cn: '萨迦班智达', correct: true },
+            { t: 'ཙོང་ཁ་པ།', cn: '宗喀巴大师', correct: false },
+            { t: 'མི་ཕམ་རིན་པོ་ཆེ།', cn: '麦彭仁波切', correct: false }
+        ]}
+    ]
+};
+
+// ===== STATE =====
+let currentLang = 'bo';
+let currentExam = null;
+let examIdx = 0;
+let examScore = 0;
+let accessGranted = false;
+let pendingAction = null;
+
+// ===== INIT =====
+function chooseLang(lang) {
+    currentLang = lang;
+    document.getElementById('lang-select-overlay').classList.add('hidden');
+    document.getElementById('btn-lang-' + lang).classList.add('active');
+    document.getElementById('btn-lang-' + (lang === 'bo' ? 'zh' : 'bo')).classList.remove('active');
+}
+
+function toggleLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-lang-bo').classList.toggle('active', lang === 'bo');
+    document.getElementById('btn-lang-zh').classList.toggle('active', lang === 'zh');
+    // In a full app, this would re-render all text content
+}
+
+function showView(viewId) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + viewId).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    const navBtn = Array.from(document.querySelectorAll('.nav-link')).find(n => n.getAttribute('onclick')?.includes("'" + viewId + "'"));
+    if (navBtn) navBtn.classList.add('active');
+    window.scrollTo(0, 0);
+
+    if (viewId === 'levels') renderLevels();
+}
+
+// ===== LEVELS =====
+function renderLevels() {
+    const container = document.getElementById('levels-container');
+    let html = '';
+    let currentPhase = 0;
+    levelsData.forEach(lv => {
+        if (lv.phase !== currentPhase) {
+            currentPhase = lv.phase;
+            const phaseTitles = ['', 'དུས་རིམ་དང་པོ། རྨང་གཞི། (སློབ་རིམ་༡–༣)', 'དུས་རིམ་གཉིས་པ། མཚན་ཉིད། (སློབ་རིམ་༤–༦)', 'དུས་རིམ་གསུམ་པ། གསང་སྔགས། (སློབ་རིམ་༧–༩)'];
+            const phaseCns = ['', '初级阶段：基础与共明', '中级阶段：显教法相', '高级阶段：密续与高阶'];
+            html += `<div class="level-group"><div class="level-group-title"><h3>${phaseTitles[lv.phase]}</h3><span class="cn">${phaseCns[lv.phase]}</span></div></div>`;
+        }
+        const lockedClass = lv.locked ? 'locked' : '';
+        const lockIcon = lv.locked ? '&#x1F512; ' : '';
+        const btnClass = lv.locked ? 'btn-locked' : 'btn-study';
+        const btnText = lv.locked ? 'སྒོ་བརྒྱབས་ཡོད། 已锁定' : 'སློབ་སྦྱོང་། 学习';
+        const onclick = lv.locked ? 'promptAccess()' : '';
+        html += `
+            <div class="level-row ${lockedClass}">
+                <div class="level-num l${lv.cnNum}">${lv.num}</div>
+                <div class="level-info">
+                    <h4>${lockIcon}${lv.title}</h4>
+                    <div class="cn-name">${lv.cn}</div>
+                    <div class="level-desc">${lv.desc}</div>
+                </div>
+                <div class="level-actions">
+                    <button class="${btnClass}" onclick="${onclick}">${btnText}</button>
+                    <button class="btn-video" onclick="${lv.locked ? 'promptAccess()' : 'showView(\'videos\')'}">&#x25B6; བརྙན། 视频</button>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+// ===== VIDEO =====
+let currentVideoIdx = 0;
+function playVideo() {
+    alert('བརྙན་ལམ་སློབ་ཁྲིད་འགོ་བཙུགས། 开始播放视频教学');
+}
+function loadVideo(idx) {
+    currentVideoIdx = idx;
+    const v = videos[idx];
+    if (v.locked) { promptAccess(); return; }
+    document.getElementById('video-title').textContent = v.title;
+    document.getElementById('video-cn-title').textContent = v.cn;
+    document.getElementById('video-duration').textContent = '&#x23F1; ' + v.dur;
+    document.getElementById('video-level').textContent = '&#x1F393; ' + v.level;
+    document.getElementById('video-teacher').textContent = '&#x1F464; ' + v.teacher;
+    document.querySelectorAll('.video-controls .v-control').forEach((b, i) => b.classList.toggle('active', i === idx));
+}
+
+// ===== ACCESS CONTROL =====
+function promptAccess() {
+    pendingAction = 'video';
+    document.getElementById('access-modal').classList.add('active');
+    document.getElementById('access-code-input').value = '';
+    document.getElementById('access-code-input').focus();
+}
+function promptAccessExam() {
+    pendingAction = 'exam';
+    document.getElementById('access-modal').classList.add('active');
+    document.getElementById('access-code-input').value = '';
+    document.getElementById('access-code-input').focus();
+}
+function checkAccessCode() {
+    const code = document.getElementById('access-code-input').value.trim();
+    if (code === 'SAKYA' || code === 'ས་སྐྱ') {
+        accessGranted = true;
+        document.getElementById('access-modal').classList.remove('active');
+        alert('ཆོག་མཆན་ལེགས་པར་ཐོབ་སོང་། 密码正确，已解锁密法课程。');
+        levelsData.forEach(l => { if (l.phase === 3) l.locked = false; });
+        if (document.getElementById('view-levels').classList.contains('active')) renderLevels();
+        document.querySelectorAll('.cert-card.locked').forEach(c => { c.classList.remove('locked'); c.querySelector('.cert-status').textContent = 'སྒོ་ཕྱེས་ཡོད། 已解锁'; c.querySelector('.cert-status').className = 'cert-status pending'; c.querySelector('.cert-icon').textContent = '🏆'; });
+        if (pendingAction === 'exam') startExam('advanced');
+    } else {
+        alert('ལག་འཁྱེར་ནོར་འདུག 密码错误，请重新输入。');
+    }
+}
+
+// ===== EXAM =====
+function startExam(level) {
+    if (level === 'advanced' && !accessGranted) { promptAccessExam(); return; }
+    currentExam = examQuestions[level] || [];
+    if (currentExam.length === 0) { alert('བསྐྱར་ཞིབ་ཀྱི་དྲི་བ་གསར་སྣོན་བྱེད་བཞིན་ཡོད། 正在添加测验题目...'); return; }
+    examIdx = 0; examScore = 0;
+    document.getElementById('exam-start').style.display = 'none';
+    document.getElementById('exam-result-box').style.display = 'none';
+    document.getElementById('exam-question-box').style.display = 'block';
+    showExamQuestion();
+}
+function showExamQuestion() {
+    const q = currentExam[examIdx];
+    document.getElementById('exam-q-num').textContent = String(examIdx + 1).replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
+    document.getElementById('exam-q-total').textContent = String(currentExam.length).replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
+    document.getElementById('exam-fill').style.width = ((examIdx / currentExam.length) * 100) + '%';
+    document.getElementById('exam-q-text').innerHTML = `<div>${q.q}</div><div class="cn-q">${q.cnQ}</div>`;
+    document.getElementById('exam-options').innerHTML = q.opts.map((o, i) =>
+        `<button class="exam-option" onclick="selectExamOpt(${i})"><strong>${String.fromCharCode(65 + i)}.</strong> ${o.t}<span class="cn-opt">${o.cn}</span></button>`
+    ).join('');
+}
+function selectExamOpt(idx) {
+    const q = currentExam[examIdx];
+    const opts = document.querySelectorAll('.exam-option');
+    const correct = q.opts[idx].correct;
+    opts.forEach((b, i) => {
+        b.disabled = true;
+        if (q.opts[i].correct) b.classList.add('correct');
+        else if (i === idx) b.classList.add('wrong');
+    });
+    if (correct) examScore++;
+    setTimeout(() => {
+        examIdx++;
+        if (examIdx < currentExam.length) showExamQuestion();
+        else showExamResult();
+    }, 1400);
+}
+function showExamResult() {
+    document.getElementById('exam-question-box').style.display = 'none';
+    document.getElementById('exam-result-box').style.display = 'block';
+    const pct = Math.round((examScore / currentExam.length) * 100);
+    const tibPct = pct.toString().replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
+    document.getElementById('exam-score').textContent = tibPct + '%';
+    let fb = '';
+    if (pct >= 80) fb = 'བསྐྱར་ཞིབ་ལེགས་པོ་བྱུང་སོང་། སློབ་རིམ་རྗེས་མར་འཕར་ཆོག 测验优秀！可以晋级下一级。';
+    else if (pct >= 60) fb = 'བསྐྱར་ཞིབ་ལེགས་པོ་བྱུང་སོང་། ཡང་བསྐྱར་སྦྱོང་བརྡར་གྱིས། 测验良好，请继续复习。';
+    else fb = 'ཡང་བསྐྱར་སྦྱོང་བརྡར་གྱིས་དགོས། སློབ་ཚན་ནང་དོན་ཡང་བསྐྱར་གོ་བ་ལེན་རོགས། 需要重新复习课程内容。';
+    document.getElementById('exam-feedback').textContent = fb;
+    // update progress
+    const hp = Math.min(25 + pct * 0.5, 100);
+    const tibHp = Math.round(hp).toString().replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
+    document.getElementById('header-progress').textContent = `སློབ་གཉེར། ${tibHp}% | 学习进度 ${Math.round(hp)}%`;
+}
+function resetExam() {
+    document.getElementById('exam-result-box').style.display = 'none';
+    document.getElementById('exam-start').style.display = 'block';
+}
+
+// ===== INITIAL RENDER =====
+renderLevels();
+</script>
 </body>
 </html>
