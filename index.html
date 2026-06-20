@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ། | 萨迦高级佛学院</title>
+    <title>གཙང་གསུམ་རིག་བཅུ་དཔེ་གླིང་།། | 三江十明书院</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -331,6 +331,7 @@
         }
         .btn-study { background: var(--sakya-blue); color: white; }
         .btn-video { background: var(--sakya-gold); color: var(--sakya-dark); }
+        .btn-exam-now { background: var(--sakya-red); color: white; font-weight: bold; }
         .btn-locked {
             background: #ddd; color: #888; cursor: not-allowed;
         }
@@ -416,7 +417,7 @@
             width: 3px; background: var(--sakya-gold);
         }
 
-        /* ===== EXAM SYSTEM ===== */
+        /* ===== EXAM SYSTEM (AI TEACHER ENHANCED) ===== */
         .exam-wrap {
             max-width: 750px; margin: 0 auto; padding: 0 2rem 2rem;
         }
@@ -424,6 +425,17 @@
             background: white; border-radius: 12px; padding: 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid var(--border-color);
         }
+        .ai-teacher-box {
+            display: flex; gap: 1rem; align-items: center;
+            background: var(--sakya-dark); color: var(--sakya-gold);
+            padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;
+            border-left: 5px solid var(--sakya-red);
+        }
+        .ai-avatar {
+            width: 50px; height: 50px; background: var(--sakya-red); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;
+        }
+        .ai-speech { font-size: 0.92rem; font-weight: 500; flex: 1; }
         .exam-progress {
             display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
         }
@@ -441,7 +453,7 @@
         .exam-option {
             padding: 1rem 1.2rem; border: 2px solid var(--border-color); border-radius: 8px;
             background: white; cursor: pointer; text-align: left; transition: all 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.95rem; width: 100%;
         }
         .exam-option:hover { border-color: var(--sakya-blue); background: rgba(30,58,95,0.03); }
         .exam-option.correct { border-color: #4a7c6f; background: rgba(74,124,111,0.08); }
@@ -472,190 +484,15 @@
         .cert-status.pending { background: rgba(201,168,76,0.15); color: #8a7020; }
         .cert-status.locked { background: #eee; color: #888; }
 
-        /* ===== FORUMS ===== */
-        .forum-wrap {
-            max-width: 900px; margin: 0 auto; padding: 0 2rem 2rem;
-        }
-        .forum-post {
-            background: white; border-radius: 10px; padding: 1.2rem;
-            border: 1px solid var(--border-color); margin-bottom: 1rem;
-            transition: all 0.2s;
-        }
-        .forum-post:hover { border-color: var(--sakya-gold); }
-        .forum-post-header {
-            display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;
-        }
-        .forum-author { display: flex; align-items: center; gap: 0.6rem; }
-        .forum-avatar {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: var(--sakya-blue); color: white;
-            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
-        }
-        .forum-author-info { font-size: 0.85rem; }
-        .forum-author-info .name { font-weight: 500; color: var(--sakya-dark); }
-        .forum-author-info .time { color: var(--text-secondary); font-size: 0.75rem; }
-        .forum-badge {
-            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.72rem;
-        }
-        .badge-answered { background: rgba(74,124,111,0.1); color: #2d6b5e; }
-        .badge-open { background: rgba(201,168,76,0.1); color: #8a7020; }
-        .forum-title {
-            font-family: 'Noto Serif Tibetan', serif; font-size: 1.05rem; color: var(--sakya-dark);
-            margin-bottom: 0.3rem; cursor: pointer;
-        }
-        .forum-title:hover { color: var(--sakya-red); }
-        .forum-title .cn-t { font-family: 'Noto Sans SC', sans-serif; font-size: 0.9rem; color: var(--text-secondary); }
-        .forum-excerpt { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
-        .forum-actions { display: flex; gap: 1rem; font-size: 0.82rem; color: var(--text-secondary); }
-
-        /* ===== LIVE STREAM ===== */
-        .live-wrap {
-            max-width: 900px; margin: 0 auto; padding: 0 2rem 2rem;
-        }
-        .live-card {
-            background: white; border-radius: 10px; padding: 1.5rem;
-            border: 1px solid var(--border-color); margin-bottom: 1.2rem;
-            display: flex; gap: 1.2rem; align-items: flex-start;
-        }
-        .live-date {
-            width: 70px; text-align: center; flex-shrink: 0;
-            background: var(--sakya-cream); border-radius: 8px; padding: 0.6rem 0;
-        }
-        .live-date .day { font-size: 1.4rem; font-weight: 700; color: var(--sakya-red); }
-        .live-date .month { font-size: 0.75rem; color: var(--text-secondary); }
-        .live-info { flex: 1; }
-        .live-info h4 { font-family: 'Noto Serif Tibetan', serif; font-size: 1.1rem; color: var(--sakya-dark); }
-        .live-info .live-cn { font-size: 0.9rem; color: var(--text-secondary); }
-        .live-meta { display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); }
-        .live-status {
-            padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; white-space: nowrap;
-        }
-        .live-status.upcoming { background: var(--sakya-cream); color: var(--text-secondary); }
-        .live-status.live { background: var(--sakya-red); color: white; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-
-        /* ===== DASHBOARD ===== */
-        .dashboard-wrap {
-            max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem;
-        }
-        .dash-stats {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem; margin-bottom: 2rem;
-        }
-        .dash-stat {
-            background: white; border-radius: 10px; padding: 1.2rem;
-            border: 1px solid var(--border-color); text-align: center;
-        }
-        .dash-stat .num { font-size: 1.8rem; font-weight: 700; color: var(--sakya-red); }
-        .dash-stat .lbl { font-size: 0.85rem; color: var(--text-secondary); }
-        .dash-section {
-            background: white; border-radius: 10px; padding: 1.5rem;
-            border: 1px solid var(--border-color); margin-bottom: 1.5rem;
-        }
-        .dash-section h3 {
-            font-family: 'Noto Serif Tibetan', serif; color: var(--sakya-red);
-            margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);
-        }
-        .course-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.8rem 0; border-bottom: 1px solid #f0ebe3;
-        }
-        .course-item:last-child { border-bottom: none; }
-        .course-name { font-size: 0.95rem; }
-        .course-progress {
-            display: flex; align-items: center; gap: 0.8rem;
-        }
-        .course-bar {
-            width: 100px; height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden;
-        }
-        .course-bar-fill { height: 100%; background: var(--sakya-red); border-radius: 3px; }
-        .course-pct { font-size: 0.85rem; color: var(--text-secondary); }
-
-        /* ===== SEARCH BAR ===== */
-        .search-wrap {
-            max-width: 550px; margin: 0 auto 2rem; display: flex;
-        }
-        .search-input {
-            flex: 1; padding: 0.85rem 1.1rem; border: 2px solid var(--border-color);
-            border-right: none; border-radius: 8px 0 0 8px;
-            font-size: 0.95rem; outline: none;
-        }
-        .search-input:focus { border-color: var(--sakya-blue); }
-        .search-btn {
-            padding: 0.85rem 1.2rem; background: var(--sakya-blue); color: white;
-            border: 2px solid var(--sakya-blue); border-radius: 0 8px 8px 0;
-            cursor: pointer; font-size: 1rem;
-        }
-
-        /* ===== ACCESS CODE MODAL ===== */
-        .access-modal-overlay {
-            display: none; position: fixed; inset: 0; z-index: 5000;
-            background: rgba(0,0,0,0.65); align-items: center; justify-content: center;
-        }
-        .access-modal-overlay.active { display: flex; }
-        .access-modal {
-            background: white; border-radius: 14px; padding: 2.5rem;
-            max-width: 450px; width: 90%; text-align: center;
-            border: 2px solid var(--sakya-red);
-        }
-        .access-modal .lock-icon { font-size: 3rem; color: var(--sakya-red); margin-bottom: 1rem; }
-        .access-modal h3 { font-family: 'Noto Serif Tibetan', serif; margin-bottom: 0.5rem; color: var(--sakya-dark); }
-        .access-modal p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.92rem; }
-        .access-input {
-            width: 100%; padding: 0.9rem; border: 2px solid var(--border-color);
-            border-radius: 6px; font-size: 1.1rem; text-align: center; letter-spacing: 0.3rem;
-            margin-bottom: 1rem; outline: none;
-        }
-        .access-input:focus { border-color: var(--sakya-red); }
-        .access-btn {
-            width: 100%; padding: 0.8rem; background: var(--sakya-red); color: white;
-            border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;
-        }
-        .access-btn:hover { background: #b02d3f; }
-
         /* ===== FOOTER ===== */
         .site-footer {
             background: var(--sakya-dark); color: var(--sakya-cream);
             padding: 3rem 2rem 1rem; margin-top: 3rem;
         }
-        .footer-grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
-        .footer-col h4 { color: var(--sakya-gold); margin-bottom: 1rem; font-family: 'Noto Serif Tibetan', serif; }
-        .footer-col a {
-            display: block; color: rgba(245,240,232,0.7);
-            text-decoration: none; padding: 0.25rem 0; font-size: 0.88rem;
-            transition: color 0.2s;
-        }
-        .footer-col a:hover { color: var(--sakya-gold); }
         .footer-bottom {
-            text-align: center; padding-top: 2rem; margin-top: 2rem;
+            text-align: center; padding-top: 1rem;
             border-top: 1px solid rgba(201,168,76,0.15);
             font-size: 0.82rem; color: rgba(245,240,232,0.55);
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--sakya-cream); }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--sakya-blue); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.5rem; }
-            .hero h1 .cn-title { font-size: 1rem; }
-            .main-nav { flex-wrap: wrap; }
-            .nav-link { padding: 0.6rem 0.9rem; font-size: 0.82rem; }
-            .ereader-panes { grid-template-columns: 1fr; }
-            .ereader-divider { display: none; }
-            .level-row { flex-direction: column; }
-            .live-card { flex-direction: column; }
-            .phases-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .header-topbar { flex-wrap: wrap; gap: 0.5rem; }
-            .lang-select-buttons { flex-direction: column; gap: 0.8rem; }
         }
 
         .hidden { display: none !important; }
@@ -666,28 +503,11 @@
 <!-- LANGUAGE SELECT OVERLAY -->
 <div id="lang-select-overlay">
     <div class="lang-select-logo">&#x2638;</div>
-    <div class="lang-select-title">དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ།</div>
-    <div class="lang-select-subtitle">萨迦高级佛学院在线平台</div>
+    <div class="lang-select-title">གཙང་གསུམ་རིག་བཅུ་དཔེ་གླིང་།།</div>
+    <div class="lang-select-subtitle">三江十明书院</div>
     <div class="lang-select-buttons">
-        <button class="lang-select-btn" onclick="chooseLang('bo')">
-            བོད་སྐད།
-            <span class="cn-label">藏文</span>
-        </button>
-        <button class="lang-select-btn" onclick="chooseLang('zh')">
-            རྒྱ་སྐད།
-            <span class="cn-label">中文</span>
-        </button>
-    </div>
-</div>
-
-<!-- ACCESS CODE MODAL -->
-<div class="access-modal-overlay" id="access-modal">
-    <div class="access-modal">
-        <div class="lock-icon">&#x1F512;</div>
-        <h3>གསང་སྔགས་སློབ་རིམ། 密法课程</h3>
-        <p>སློབ་རིམ་འདི་ལ་ལག་འཁྱེར་ཆོག་མཆན་དགོས།<br>此课程需要输入访问密码。</p>
-        <input type="text" class="access-input" id="access-code-input" placeholder="------" maxlength="6">
-        <button class="access-btn" onclick="checkAccessCode()">འགྲོ་ལམ་ཕྱེ་བ། 进入课程</button>
+        <button class="lang-select-btn" onclick="chooseLang('bo')">བོད་སྐད།<span class="cn-label">藏文</span></button>
+        <button class="lang-select-btn" onclick="chooseLang('zh')">རྒྱ་སྐད།<span class="cn-label">中文</span></button>
     </div>
 </div>
 
@@ -697,12 +517,12 @@
         <div class="header-brand">
             <div class="brand-icon">&#x2638;</div>
             <div class="brand-text">
-                <span class="tib">དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ།</span>
-                <span class="cn">萨迦高级佛学院</span>
+                <span class="tib">གཙང་གསུམ་རིག་བཅུ་དཔེ་གླིང་།།</span>
+                <span class="cn">三江十明书院</span>
             </div>
         </div>
         <div class="header-actions">
-            <div class="user-progress-chip" id="header-progress">སློབ་གཉེར། ༢༥% | 学习进度 25%</div>
+            <div class="user-progress-chip" id="header-progress">སློབ་གཉེར། ༠% | 学习进度 0%</div>
             <div class="lang-toggle">
                 <button class="lang-toggle-btn active" id="btn-lang-bo" onclick="toggleLang('bo')">བོད།</button>
                 <button class="lang-toggle-btn" id="btn-lang-zh" onclick="toggleLang('zh')">中文</button>
@@ -711,42 +531,14 @@
         </div>
     </div>
     <nav class="main-nav">
-        <button class="nav-link active" onclick="showView('home')">
-            གཙོ་ངོས།
-            <span class="cn-label">首页</span>
-        </button>
-        <button class="nav-link" onclick="showView('levels')">
-            སློབ་རིམ།
-            <span class="cn-label">课程</span>
-        </button>
-        <button class="nav-link" onclick="showView('videos')">
-            བརྙན་སློབ།
-            <span class="cn-label">视频</span>
-        </button>
-        <button class="nav-link" onclick="showView('reader')">
-            དཔེ་ཀློག
-            <span class="cn-label">阅藏</span>
-        </button>
-        <button class="nav-link" onclick="showView('exam')">
-            རྒྱུགས་སྤྲོད།
-            <span class="cn-label">考试</span>
-        </button>
-        <button class="nav-link" onclick="showView('cert')">
-            ཕྱག་འཁྱེར།
-            <span class="cn-label">证书</span>
-        </button>
-        <button class="nav-link" onclick="showView('forum')">
-            བགྲོ་གླེང་།
-            <span class="cn-label">论坛</span>
-        </button>
-        <button class="nav-link" onclick="showView('live')">
-            ཐད་གཏོང་།
-            <span class="cn-label">直播</span>
-        </button>
-        <button class="nav-link" onclick="showView('dashboard')">
-            ངོས་སྤྲོད།
-            <span class="cn-label">我的</span>
-        </button>
+        <button class="nav-link active" onclick="showView('home')">གཙོ་ངོས། <span class="cn-label">首页</span></button>
+        <button class="nav-link" onclick="showView('levels')">སློབ་རིམ། <span class="cn-label">课程</span></button>
+        <button class="nav-link" onclick="showView('videos')">བརྙན་སློབ། <span class="cn-label">视频</span></button>
+        <button class="nav-link" onclick="showView('reader')">དཔེ་ཀློག <span class="cn-label">阅藏</span></button>
+        <button class="nav-link" onclick="showView('exam')">AI བཤེར་གཤེར། <span class="cn-label">AI考核</span></button>
+        <button class="nav-link" onclick="showView('cert')">ཕྱག་འཁྱེར། <span class="cn-label">证书</span></button>
+        <button class="nav-link" onclick="showView('dashboard')">ངོས་སྤྲོད། <span class="cn-label">我的</span></button>
+            <button class="nav-link" onclick="showQRCodeModal()">SK.大悲利众洲 <span class="cn-label">关注</span></button>
     </nav>
 </header>
 
@@ -756,74 +548,54 @@
         <div class="hero-content">
             <h1>
                 དཔལ་ལྡན་ས་སྐྱ་པའི་གསུང་རབས་རྣམས་དྲ་ཚིག་ལམ་ནས་སློབ་གཉེར།
-                <span class="cn-title">萨迦派经典在线学院 · 九级修学体系</span>
+                <span class="cn-title">萨迦派经典在线学院 · AI逐级修学体系</span>
             </h1>
             <p class="hero-desc">
-                ནང་ཆོས་དོན་གཉེར་ཅན་རྣམས་ཀྱིས་རང་གི་ནང་ཆོས་ལ་སློབ་པའི་རིམ་པ་ལྟར་སློབ་གཉེར་བྱ་ཆོག་པའི་དྲ་སྟེགས།<br>
-                为佛教修行者提供按次第学习萨迦派经典的在线平台
+                学生须从第一级别按次第修学，修学完毕后通过AI老师的法义考核，方可晋级并解锁下一级别的学习路线。<br>
+                依止次第，AI严格把关，科学见证功德精进。
             </p>
             <div class="hero-btns">
-                <button class="btn btn-primary" onclick="showView('levels')">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
-                <button class="btn btn-outline" onclick="showView('dashboard')">ངོས་སྤྲོད་ལ་ལྟ་བ། 个人中心</button>
+                <button class="btn btn-primary" onclick="showView('levels')">སློབ་རིམ་ལ་ལྟ་བ། 开始修学</button>
+                <button class="btn btn-outline" onclick="showView('exam')">AI老师考核厅</button>
             </div>
         </div>
     </div>
 
     <div class="section-head">
         <h2>སློབ་གཉེར་དུས་རིམ་གསུམ།</h2>
-        <span class="cn-title">三阶修学体系</span>
-        <p class="desc">སློབ་རིམ་དགུ་པོ་རྨང་གཞི་དང་མཚན་ཉིད། གསང་སྔགས་གསུམ་ལ་དབྱེ་བ། 九级课程分为基础、法相、密续三阶</p>
+        <span class="cn-title">三阶递进修学体系</span>
+        <p class="desc">九级课程需要通过AI考核由浅入深层层晋级</p>
     </div>
 
     <div class="phases-grid">
         <div class="phase-card" onclick="showView('levels')">
             <div class="phase-header phase1">
                 <h3>དུས་རིམ་དང་པོ། རྨང་གཞི།</h3>
-                <span class="phase-cn">初级阶段：基础与共明</span>
-                <span class="phase-range">སློབ་རིམ་༡–༣</span>
+                <span class="phase-cn">初级阶段：基础与共明 (1-3级)</span>
             </div>
             <div class="phase-body">
-                <p>བོད་ཡིག་ཀློག་སྟངས། སུམ་རྟགས། སྙན་ངག སྐར་རྩིས། ས་སྐྱ་ལེགས་བཤད་སོགས་སློབ་གཉེར་བྱེད་པ།<br>藏文读写、因明、诗学、历算、萨迦格言等基础学科</p>
-                <div class="phase-stats">
-                    <div class="p-stat"><div class="num">༡༥</div><div class="lbl">经典</div></div>
-                    <div class="p-stat"><div class="num">༤༨</div><div class="lbl">课时</div></div>
-                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">测验</div></div>
-                </div>
-                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+                <p>藏文读写、因明基础、诗学、历算、萨迦格言等基础共明学科</p>
+                <button class="phase-btn">查看此阶段</button>
             </div>
         </div>
-
         <div class="phase-card" onclick="showView('levels')">
             <div class="phase-header phase2">
                 <h3>དུས་རིམ་གཉིས་པ། མཚན་ཉིད།</h3>
-                <span class="phase-cn">中级阶段：显教法相</span>
-                <span class="phase-range">སློབ་རིམ་༤–༦</span>
+                <span class="phase-cn">中级阶段：显教法相 (4-6级)</span>
             </div>
             <div class="phase-body">
-                <p>ཚད་མ་རིག་པ། དབུ་མ། ཕར་ཕྱིན། མངོན་པ། འདུལ་བ། སྡོམ་གསུམ་སོགས་སློབ་གཉེར་བྱེད་པ།<br>量理、中观、般若、俱舍、戒律、三戒分别等</p>
-                <div class="phase-stats">
-                    <div class="p-stat"><div class="num">༢༢</div><div class="lbl">经典</div></div>
-                    <div class="p-stat"><div class="num">༧༢</div><div class="lbl">课时</div></div>
-                    <div class="p-stat"><div class="num">༢༤</div><div class="lbl">测验</div></div>
-                </div>
-                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+                <p>量理宝藏、中观论、般若现观、俱舍论、戒律与三戒分别论</p>
+                <button class="phase-btn">查看此阶段</button>
             </div>
         </div>
-
         <div class="phase-card" onclick="showView('levels')">
             <div class="phase-header phase3">
                 <h3>དུས་རིམ་གསུམ་པ། གསང་སྔགས།</h3>
-                <span class="phase-cn">高级阶段：密续与高阶</span>
-                <span class="phase-range">སློབ་རིམ་༧–༩</span>
+                <span class="phase-cn">高级阶段：密续深义 (7-9级)</span>
             </div>
             <div class="phase-body">
-                <p>རྒྱུད་སྡེ་སྤྱི་རྣམ། ཀྱཻ་རྡོ་རྗེ། ལམ་འབྲས། དཀྱིལ་འཁོར་གྱི་ཆོ་ག་སོགས་ཟབ་ཆོས་སློབ་གཉེར་བྱེད་པ།<br>续部总论、喜金刚、道果、坛城仪轨等密法深义</p>
-                <div class="phase-stats">
-                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">经典</div></div>
-                    <div class="p-stat"><div class="num">༦༠</div><div class="lbl">课时</div></div>
-                    <div class="p-stat"><div class="num">༡༨</div><div class="lbl">测验</div></div>
-                </div>
-                <button class="phase-btn">སློབ་རིམ་ལ་ལྟ་བ། 查看课程</button>
+                <p>续部总论、喜金刚坛城仪轨、萨迦派核心大道果法</p>
+                <button class="phase-btn">查看此阶段</button>
             </div>
         </div>
     </div>
@@ -833,7 +605,7 @@
 <div class="view" id="view-levels">
     <div class="section-head">
         <h2>སློབ་རིམ་དགུའི་ནང་དོན།</h2>
-        <span class="cn-title">九级课程内容</span>
+        <span class="cn-title">九级修学路线（AI逐级解锁）</span>
     </div>
     <div class="levels-container" id="levels-container">
         <!-- Dynamically populated -->
@@ -853,19 +625,6 @@
         <div class="video-info">
             <h3 id="video-title">སྐྱབས་འགྲོའི་བཤད་ཁྲིད། ༼༡༽</h3>
             <div class="video-cn" id="video-cn-title">皈依讲解（一）</div>
-            <div class="video-meta">
-                <span id="video-duration">&#x23F1; ༤༥ སྐར་མ། 45分钟</span>
-                <span id="video-level">&#x1F393; སློབ་རིམ་༡ 一级</span>
-                <span id="video-teacher">&#x1F464; མཁན་པོ་འཇམ་དབྱངས། 姜央堪布</span>
-            </div>
-        </div>
-        <div class="video-controls">
-            <button class="v-control active" onclick="loadVideo(0)">སྐྱབས་འགྲོ། 皈依</button>
-            <button class="v-control" onclick="loadVideo(1)">བླ་མའི་རྣལ་འབྱོར། 上师瑜伽</button>
-            <button class="v-control" onclick="loadVideo(2)">ཚད་མ། 量理</button>
-            <button class="v-control" onclick="loadVideo(3)">དབུ་མ། 中观</button>
-            <button class="v-control" onclick="loadVideo(4)">ཕྱག་ཆེན། 大手印</button>
-            <button class="v-control locked" onclick="promptAccess()">&#x1F512; ལམ་འབྲས། 道果</button>
         </div>
     </div>
 </div>
@@ -874,78 +633,68 @@
 <div class="view" id="view-reader">
     <div class="section-head">
         <h2>དྲ་ཐོག་དཔེ་དེབ།</h2>
-        <span class="cn-title">在线阅藏</span>
+        <span class="cn-title">在线阅藏与教材</span>
     </div>
     <div class="ereader-wrap">
-        <div class="ereader-toolbar">
-            <div>
-                <strong>གཡོན། བོད་ཡིག་རྩ་གཞུང་།</strong>
-                <span style="color:var(--text-secondary);font-size:0.85rem"> | 左：藏文原文</span>
-            </div>
-            <div style="text-align:right">
-                <strong>གཡས། རྒྱ་ཡིག་འགྲེལ་པ།</strong>
-                <span style="color:var(--text-secondary);font-size:0.85rem"> | 右：中文释译</span>
-            </div>
-        </div>
         <div class="ereader-panes">
             <div class="ereader-pane tibetan" id="ereader-tib">
                 <h4>སྐྱབས་འགྲོ་ཡན་ལག་བདུན་པ།</h4>
-                <p>ན་མོ་གུ་རུ་བྷྱཿ བླ་མ་དམ་པ་རྣམས་ལ་ཕྱག་འཚལ་ལོ།</p>
-                <p>སྐྱབས་འགྲོ་ཡན་ལག་བདུན་པ་ནི། དང་པོ་སྐྱབས་འགྲོ་དང་། གཉིས་པ་བྱང་ཆུབ་ཀྱི་སེམས། གསུམ་པ་བདག་མེད་མོས་པ། བཞི་པ་མཆོད་པ། ལྔ་པ་སྡིག་བཤགས། དྲུག་པ་བསོད་ནམས་ལ་རྗེས་སུ་ཡི་རང་བ། བདུན་པ་བསྔོ་བ་དང་གསོལ་འདེབས་ཡིན་ནོ།།</p>
-                <p style="margin-top:1rem">འདི་ལ་དང་པོ་སྐྱབས་འགྲོ་ནི། སྐྱབས་ཀྱི་གནས་དཀོན་མཆོག་གསུམ་ལ་སྐྱབས་སུ་འགྲོ་བ་སྟེ། སངས་རྒྱས་ལ་སྐྱབས་སུ་སོང་བས་ནི་བླ་མེད་བྱང་ཆུབ་ཀྱི་འབྲས་བུ་ཐོབ་པའི་ལམ་སྟོན་པ་དང་།</p>
+                <p>点击相应级别里的“📖 进入修学”即可载入标准数字化教材文本。</p>
             </div>
             <div class="ereader-divider"></div>
             <div class="ereader-pane chinese" id="ereader-cn">
-                <h4>七支皈依文</h4>
-                <p>南无格日贝。顶礼诸位殊胜上师。</p>
-                <p>七支皈依者：第一皈依，第二发菩提心，第三修无我见，第四供养，第五忏悔，第六随喜功德，第七回向与祈祷。</p>
-                <p style="margin-top:1rem">此中第一皈依者，谓皈依法宝三宝之处，皈依佛者，即为开示获得无上菩提果位之道。</p>
+                <h4>标准学制对译系统</h4>
+                <p>左侧为藏文原文或核心颂词，右侧同步加载中文释译与AI法相辅导说明。</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ===== EXAM VIEW ===== -->
+<!-- ===== EXAM VIEW (AI TEACHER INTEGRATED) ===== -->
 <div class="view" id="view-exam">
     <div class="section-head">
         <h2>དྲ་ཐོག་རྒྱུགས་སྤྲོད།</h2>
-        <span class="cn-title">在线考试</span>
+        <span class="cn-title">AI导师考评厅</span>
     </div>
     <div class="exam-wrap">
         <div class="exam-card" id="exam-card">
-            <div id="exam-start">
-                <div class="exam-result-box">
-                    <div style="font-size:3.5rem;margin-bottom:1rem">&#x1F4DD;</div>
-                    <h3 style="margin-bottom:0.8rem;font-family:'Noto Serif Tibetan',serif">དྲ་ཐོག་རྒྱུགས་སྤྲོད་འགོ་བཙུགས།</h3>
-                    <p style="color:var(--text-secondary);margin-bottom:2rem">
-                        སློབ་རིམ་རེ་རེའི་མཇུག་ཏུ་རྒྱུགས་སྤྲོད་བྱས་ཏེ་སློབ་རིམ་རྗེས་མར་འཕར་ཐུབ།<br>
-                        每级课程结束后可参加考试，通过后晋级下一级。
-                    </p>
-                    <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap">
-                        <button class="btn btn-primary" onclick="startExam('beginner')">སློབ་རིམ་༡–༣ 初级考试</button>
-                        <button class="btn btn-gold" onclick="startExam('intermediate')">སློབ་རིམ་༤–༦ 中级考试</button>
-                        <button class="btn btn-outline" style="color:var(--sakya-dark);border-color:var(--sakya-red)" onclick="promptAccessExam()">སློབ་རིམ་༧–༩ 高级考试</button>
-                    </div>
+            
+            <div class="ai-teacher-box">
+                <div class="ai-avatar">🤖</div>
+                <div class="ai-speech" id="ai-teacher-speech">
+                    扎西德勒！我是你的AI专属导师。请在完成当前级别所有教授的修学后，点击下方按钮接受我的严格法义考核。
                 </div>
             </div>
+
+            <div id="exam-start">
+                <div class="exam-result-box">
+                    <h3 style="margin-bottom:0.8rem;font-family:'Noto Serif Tibetan',serif" id="exam-start-title">第 1 级别 AI 考核</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:2rem">
+                        考核包含多道核心法义辨析，只有正确率达到 100% 才能通过考核并进入下一级别。
+                    </p>
+                    <button class="btn btn-primary" onclick="startAIExam()">开始评估考核</button>
+                </div>
+            </div>
+
             <div id="exam-question-box" style="display:none">
                 <div class="exam-progress">
-                    <span id="exam-q-num">༡</span>
+                    <span id="exam-q-num">1</span>
                     <div class="exam-progress-bar"><div class="exam-progress-fill" id="exam-fill" style="width:0%"></div></div>
-                    <span id="exam-q-total">༥</span>
+                    <span id="exam-q-total">8</span>
                 </div>
                 <div class="exam-q-text" id="exam-q-text"></div>
                 <div class="exam-options" id="exam-options"></div>
             </div>
+
             <div id="exam-result-box" style="display:none">
                 <div class="exam-result-box">
-                    <div class="exam-score-num" id="exam-score">༨༠%</div>
-                    <h3 style="margin:1rem 0;font-family:'Noto Serif Tibetan',serif">རྒྱུགས་སྤྲོད་མཇུག་འབྲས། 考试结果</h3>
+                    <div class="exam-score-num" id="exam-score">0%</div>
+                    <h3 style="margin:1rem 0;font-family:'Noto Serif Tibetan',serif">评估考核结果</h3>
                     <p id="exam-feedback" style="color:var(--text-secondary);margin-bottom:2rem"></p>
-                    <button class="btn btn-primary" onclick="resetExam()">སླར་བསྐྱར་རྒྱུགས་སྤྲོད། 重新考试</button>
-                    <button class="btn btn-outline" style="color:var(--sakya-dark);margin-left:0.8rem" onclick="showView('cert')">ཕྱག་འཁྱེར་ལ་ལྟ་བ། 查看证书</button>
+                    <button class="btn btn-primary" id="exam-action-btn" onclick="resetExam()">重新考核</button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -954,168 +703,10 @@
 <div class="view" id="view-cert">
     <div class="section-head">
         <h2>དྲ་ཐོག་ཕྱག་འཁྱེར།</h2>
-        <span class="cn-title">在线证书</span>
+        <span class="cn-title">修学学籍结业证书</span>
     </div>
-    <div class="cert-grid">
-        <div class="cert-card">
-            <div class="cert-icon">&#x1F3C6;</div>
-            <h4>རྨང་གཞིའི་སློབ་རིམ་ཚར་ཚད།</h4>
-            <div class="cert-cn">基础课程结业证书</div>
-            <span class="cert-status completed">ལེགས་གྲུབ། 已完成</span>
-        </div>
-        <div class="cert-card">
-            <div class="cert-icon">&#x1F3C6;</div>
-            <h4>མཚན་ཉིད་ཀྱི་སློབ་རིམ་ཚར་ཚད།</h4>
-            <div class="cert-cn">法相课程结业证书</div>
-            <span class="cert-status pending">བསྒྲུབ་བཞིན་པ། 进行中</span>
-        </div>
-        <div class="cert-card locked">
-            <div class="cert-icon">&#x1F512;</div>
-            <h4>གསང་སྔགས་ཀྱི་སློབ་རིམ་ཚར་ཚད།</h4>
-            <div class="cert-cn">密续课程结业证书</div>
-            <span class="cert-status locked">སྒོ་བརྒྱབས་ཡོད། 已锁定</span>
-        </div>
-    </div>
-</div>
-
-<!-- ===== FORUM VIEW ===== -->
-<div class="view" id="view-forum">
-    <div class="section-head">
-        <h2>དྲི་བ་དྲིས་ལན་དང་བགྲོ་གླེང་།</h2>
-        <span class="cn-title">问答与论坛</span>
-    </div>
-    <div class="forum-wrap">
-        <div class="forum-post">
-            <div class="forum-post-header">
-                <div class="forum-author">
-                    <div class="forum-avatar">སློབ།</div>
-                    <div class="forum-author-info">
-                        <div class="name">སློབ་མ་དཀོན་མཆོག 贡秋学员</div>
-                        <div class="time">༢༠༢༦-༠༥-༢༠ | 2026-05-20</div>
-                    </div>
-                </div>
-                <span class="forum-badge badge-answered">ལན་ཐོབ། 已回答</span>
-            </div>
-            <div class="forum-title">
-                སྐྱབས་འགྲོ་ཡང་ཡང་བྱེད་དགོས་དོན་ཅི་ཡིན།
-                <span class="cn-t">为什么需要反复修皈依？</span>
-            </div>
-            <div class="forum-excerpt">
-                སྐྱབས་འགྲོ་ཡང་ཡང་བྱེད་པས་ཕན་ཡོན་གང་དག་ཡོད། གཅིག་བྱས་ཆོག་གམ།...
-                反复修皈依有何功德？修一次就够了吗？...
-            </div>
-            <div class="forum-actions">
-                <span>&#x1F4AC; ལན་ ༣ 条回复</span>
-                <span>&#x1F441; ལྟ་ཀློག་ ༡༢༨ 浏览 128</span>
-            </div>
-        </div>
-
-        <div class="forum-post">
-            <div class="forum-post-header">
-                <div class="forum-author">
-                    <div class="forum-avatar">རྒྱ།</div>
-                    <div class="forum-author-info">
-                        <div class="name">རྒྱ་རིགས་སློབ་མ། 汉族学员</div>
-                        <div class="time">༢༠༢༦-༠༥-༢༥ | 2026-05-25</div>
-                    </div>
-                </div>
-                <span class="forum-badge badge-open">དྲིས་ཡོད། 待回答</span>
-            </div>
-            <div class="forum-title">
-                དབུ་མ་རང་རྒྱུད་པ་དང་ཐལ་འགྱུར་པའི་ཁྱད་པར།
-                <span class="cn-t">自续中观与应成中观的区别</span>
-            </div>
-            <div class="forum-excerpt">
-                དབུ་མ་རང་རྒྱུད་པ་དང་ཐལ་འགྱུར་པའི་ལྟ་གྲུབ་ཀྱི་ཁྱད་པར་གཙོ་བོ་གང་ཡིན།...
-                自续派与应成派的主要见解区别是什么？...
-            </div>
-            <div class="forum-actions">
-                <span>&#x1F4AC; ལན་ ༠ 条回复</span>
-                <span>&#x1F441; ལྟ་ཀློག་ ༨༧ 浏览 87</span>
-            </div>
-        </div>
-
-        <div class="forum-post">
-            <div class="forum-post-header">
-                <div class="forum-author">
-                    <div class="forum-avatar">ལོ།</div>
-                    <div class="forum-author-info">
-                        <div class="name">ལོ་ཙཱ་བ་ཆེན་མོ། 大译师</div>
-                        <div class="time">༢༠༢༦-༠༥-༢༢ | 2026-05-22</div>
-                    </div>
-                </div>
-                <span class="forum-badge badge-answered">ལན་ཐོབ། 已回答</span>
-            </div>
-            <div class="forum-title">
-                རྒྱ་ཡིག་གི་དྲི་བ་རྣམས་བོད་ཡིག་ཏུ་བསྒྱུར་ནས་མཁན་པོ་ལ་སྤྱན་འབུལ་ཞུ་བ།
-                <span class="cn-t">关于中文问题翻译后呈报堪布的说明</span>
-            </div>
-            <div class="forum-excerpt">
-                རྒྱ་ཡིག་གི་དྲི་བ་རྣམས་ལོ་ཙཱ་བས་བོད་ཡིག་ཏུ་བསྒྱུར་ནས་མཁན་པོ་རྣམས་ལ་སྤྱན་འབུལ་ཞུ་བར་བྱེད་པ་ཡིན།...
-                中文问题由译师翻译为藏文后呈报堪布解答...
-            </div>
-            <div class="forum-actions">
-                <span>&#x1F4AC; ལན་ ༥ 条回复</span>
-                <span>&#x1F441; ལྟ་ཀློག་ ༢༥༦ 浏览 256</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ===== LIVE STREAM VIEW ===== -->
-<div class="view" id="view-live">
-    <div class="section-head">
-        <h2>ཐད་གཏོང་སློབ་ཁྲིད།</h2>
-        <span class="cn-title">直播教学</span>
-    </div>
-    <div class="live-wrap">
-        <div class="live-card">
-            <div class="live-date">
-                <div class="day">༢༨</div>
-                <div class="month">ཟླ་ ༥ 五月</div>
-            </div>
-            <div class="live-info">
-                <h4>དོགས་གཅོད་ཐད་གཏོང་། སྐྱབས་འགྲོའི་སྐོར་གྱི་དྲི་བ་རྣམས།</h4>
-                <div class="live-cn">在线答疑：关于皈依的诸问题</div>
-                <div class="live-meta">
-                    <span>&#x1F550; ༢༠:༠༠ (བོད་ཆུ་ཚོད་) 北京时间 20:00</span>
-                    <span>&#x1F464; མཁན་པོ་འཇམ་དབྱངས། 姜央堪布</span>
-                </div>
-            </div>
-            <span class="live-status upcoming">མ་འོངས། 即将开始</span>
-        </div>
-
-        <div class="live-card">
-            <div class="live-date">
-                <div class="day">༣༠</div>
-                <div class="month">ཟླ་ ༥ 五月</div>
-            </div>
-            <div class="live-info">
-                <h4>དབུ་མ་འཇུག་པའི་ལེའུ་དྲུག་པའི་བཤད་ཁྲིད།</h4>
-                <div class="live-cn">《入中论》第六品讲解</div>
-                <div class="live-meta">
-                    <span>&#x1F550; ༡༩:༣༠ (བོད་ཆུ་ཚོད་) 北京时间 19:30</span>
-                    <span>&#x1F464; དགེ་བཤེས་ཐུབ་བསྟན། 土登格西</span>
-                </div>
-            </div>
-            <span class="live-status upcoming">མ་འོངས། 即将开始</span>
-        </div>
-
-        <div class="live-card">
-            <div class="live-date">
-                <div class="day">༢༥</div>
-                <div class="month">ཟླ་ ༥ 五月</div>
-            </div>
-            <div class="live-info">
-                <h4>ས་སྐྱ་ལེགས་བཤད་ཀྱི་དང་པོ།</h4>
-                <div class="live-cn">《萨迦格言》第一品</div>
-                <div class="live-meta">
-                    <span>&#x1F550; ༡༤:༠༠ (བོད་ཆུ་ཚོད་) 北京时间 14:00</span>
-                    <span>&#x1F464; མཁན་པོ་བསོད་ནམས། 索南堪布</span>
-                </div>
-            </div>
-            <span class="live-status live">&#x1F534; ཐད་གཏོང་བྱེད་བཞིན་པ། 直播中</span>
-        </div>
+    <div class="cert-grid" id="cert-container">
+        <!-- Generated Dynamically -->
     </div>
 </div>
 
@@ -1123,219 +714,266 @@
 <div class="view" id="view-dashboard">
     <div class="section-head">
         <h2>ང་ཡི་སློབ་གཉེར།</h2>
-        <span class="cn-title">我的学习</span>
+        <span class="cn-title">个人中心与学籍档案</span>
     </div>
     <div class="dashboard-wrap">
         <div class="dash-stats">
-            <div class="dash-stat"><div class="num">༢</div><div class="lbl">སློབ་རིམ། 在学等级</div></div>
-            <div class="dash-stat"><div class="num">༡༢</div><div class="lbl">བརྙན་ལམ། 已看课时</div></div>
-            <div class="dash-stat"><div class="num">༨</div><div class="lbl">རྒྱུགས་སྤྲོད། 已考试</div></div>
-            <div class="dash-stat"><div class="num">༡</div><div class="lbl">ཕྱག་འཁྱེར། 证书</div></div>
-            <div class="dash-stat"><div class="num">༣</div><div class="lbl">དྲི་བ། 提问数</div></div>
-        </div>
-
-        <div class="dash-section">
-            <h3>སློབ་ཚན་གྱི་འཕྲིན། 课程进度</h3>
-            <div class="course-item">
-                <div class="course-name">སྐྱབས་འགྲོའི་བཤད་ཁྲིད། 皈依讲解</div>
-                <div class="course-progress">
-                    <div class="course-bar"><div class="course-bar-fill" style="width:100%"></div></div>
-                    <span class="course-pct">༡༠༠%</span>
-                </div>
-            </div>
-            <div class="course-item">
-                <div class="course-name">བླ་མའི་རྣལ་འབྱོར། 上师瑜伽</div>
-                <div class="course-progress">
-                    <div class="course-bar"><div class="course-bar-fill" style="width:80%"></div></div>
-                    <span class="course-pct">༨༠%</span>
-                </div>
-            </div>
-            <div class="course-item">
-                <div class="course-name">སྤྱོད་འཇུག 入菩萨行论</div>
-                <div class="course-progress">
-                    <div class="course-bar"><div class="course-bar-fill" style="width:45%"></div></div>
-                    <span class="course-pct">༤༥%</span>
-                </div>
-            </div>
-            <div class="course-item">
-                <div class="course-name">ཚད་མ་རིགས་གཏེར། 量理宝藏论</div>
-                <div class="course-progress">
-                    <div class="course-bar"><div class="course-bar-fill" style="width:10%"></div></div>
-                    <span class="course-pct">༡༠%</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="dash-section">
-            <h3>རྒྱུགས་སྤྲོད་མཇུག་འབྲས། 考试记录</h3>
-            <div class="course-item">
-                <div class="course-name">སློབ་རིམ་༡ ཚད་ལེན། 一级测试</div>
-                <span style="color:#4a7c6f;font-weight:600">འཕྲོད། 通过 (༩༢%)</span>
-            </div>
-            <div class="course-item">
-                <div class="course-name">སློབ་རིམ་༢ ཚད་ལེན། 二级测试</div>
-                <span style="color:#4a7c6f;font-weight:600">འཕྲོད། 通过 (༨༥%)</span>
-            </div>
-            <div class="course-item">
-                <div class="course-name">སློབ་རིམ་༣ ཚད་ལེན། 三级测试</div>
-                <span style="color:var(--sakya-gold);font-weight:600">སྒྲུབ་བཞིན་པ། 进行中</span>
-            </div>
+            <div class="dash-stat"><div class="num" id="dash-active-level">1</div><div class="lbl">当前修学级别</div></div>
+            <div class="dash-stat"><div class="num" id="dash-passed-count">0</div><div class="lbl">已通过AI考核级别</div></div>
         </div>
     </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4>དཔལ་ས་སྐྱ། 萨迦</h4>
-            <p style="color:rgba(245,240,232,0.7);font-size:0.88rem">
-                དཔལ་ལྡན་ས་སྐྱ་པའི་གསུང་རབས་རྣམས་དྲ་ཚིག་ལམ་ནས་སློབ་གཉེར་བྱེད་པའི་དྲ་སྟེགས།<br>
-                萨迦派经典在线学习平台
-            </p>
-        </div>
-        <div class="footer-col">
-            <h4>སློབ་གཉེར། 学习</h4>
-            <a href="#" onclick="showView('levels')">སློབ་རིམ། 课程</a>
-            <a href="#" onclick="showView('videos')">བརྙན་སློབ། 视频</a>
-            <a href="#" onclick="showView('reader')">དཔེ་ཀློག 阅藏</a>
-            <a href="#" onclick="showView('exam')">རྒྱུགས་སྤྲོད། 考试</a>
-        </div>
-        <div class="footer-col">
-            <h4>རོགས་རམ། 帮助</h4>
-            <a href="#" onclick="showView('forum')">དྲི་བ་དྲི་ལན། 问答</a>
-            <a href="#" onclick="showView('live')">ཐད་གཏོང་། 直播</a>
-            <a href="#">འབྲེལ་བ་བྱེད་ས། 联系我们</a>
-        </div>
-        <div class="footer-col">
-            <h4>འབྲེལ་ཡོད། 相关链接</h4>
-            <a href="#">དཔལ་ས་སྐྱའི་དགོན་པ། 萨迦寺</a>
-            <a href="#">ས་སྐྱ་གོང་མ། 萨迦法王</a>
-            <a href="#">ས་སྐྱའི་མཁས་པ། 萨迦学者</a>
-        </div>
-    </div>
     <div class="footer-bottom">
-        <p>&#xA9; ༢༠༢༦ དཔལ་ས་སྐྱའི་བཤད་གྲྭ་ཆེན་མོ། 萨迦高级佛学院 | སྲུང་སྐྱོབ་བྱས་ཡོད། 版权所有</p>
+        <p>&copy; ༢༠༢༦ གཙང་གསུམ་རིག་བཅུ་དཔེ་གླིང་།། 三江十明书院 | AI递进式闭环学制中心</p>
     </div>
 </footer>
 
 <script>
-// ===== DATA =====
+// ===== STATE MANAGEMENT =====
+let userCurrentLevel = 1; // 核心常驻状态：学生当前必须从第1级开始学习
+
 const levelsData = [
-    { num: '༡', cnNum: '1', title: 'བོད་ཡིག་ཀློག་སྟངས་དང་ཡིག་གཟུགས།', cn: '藏文读写与书法', desc: 'བོད་ཡིག་གི་གཞི་རྩའི་ཡི་གེ་དང་སྦྱོར་ཀླག འབྲུ་ཚོལ། རྒྱུན་ཆགས་ཆོས་སྤྱོད་ཀྱི་ངག་འདོན་སོགས། 藏文基础字母、拼读、诵经及日常法事念诵', phase: 1, locked: false },
-    { num: '༢', cnNum: '2', title: 'སུམ་རྟགས་དག་གསུམ། རྟགས་རིགས་བློ་རིགས།', cn: '三十颂·音势论·因明', desc: 'སུམ་རྟགས་དང་སྡེབ་སྦྱོར་གྱི་རྩ་བ། རྟགས་རིགས་དང་བློ་རིགས་ཀྱི་རྨང་གཞི། 文法三十颂与诗学、逻辑学基础', phase: 1, locked: false },
-    { num: '༣', cnNum: '3', title: 'སྙན་ངག་དང་སྐར་རྩིས། ས་སྐྱ་ལེགས་བཤད།', cn: '诗学·历算·萨迦格言', desc: 'སྙན་ངག་མེ་ལོང་། རྩིས་ཀྱི་སྟེགས། ས་སྐྱ་ལེགས་བཤད་ཀྱི་འགྲེལ་པ། 诗学明镜、历算、萨迦格言释', phase: 1, locked: false },
-    { num: '༤', cnNum: '4', title: 'ཚད་མ་རིག་པ། ཕར་ཕྱིན།', cn: '量理·般若', desc: 'ཚད་མ་རིགས་གཏེར་དང་འགྲེལ་པ། མངོན་རྟོགས་རྒྱན་གྱི་སྐབས་དང་པོ་ནས་བདུན་པའི་བར། 量理宝藏论释、现观庄严论第一至七品', phase: 2, locked: false },
-    { num: '༥', cnNum: '5', title: 'དབུ་མ། མངོན་པ།', cn: '中观·俱舍', desc: 'དབུ་མ་འཇུག་པ་དང་དབུ་མ་རྩ་ཤེས། མངོན་པ་མཛོད་དང་ཀུན་ལས་བཏུས་པ། 入中论、中观根本慧论、俱舍论、阿毗达磨集论', phase: 2, locked: false },
-    { num: '༦', cnNum: '6', title: 'འདུལ་བ། སྡོམ་གསུམ་རབ་དབྱེ།', cn: '戒律·三戒分别', desc: 'འདུལ་བ་མདོ་རྩ་བ་དང་འགྲེལ་པ། སྡོམ་གསུམ་རབ་དབྱེ་དང་དགོངས་གཅིག་གི་སྐོར། 戒律本论及注释、三戒分别论及宗旨', phase: 2, locked: false },
-    { num: '༧', cnNum: '7', title: 'རྒྱུད་སྡེ་སྤྱི་རྣམ། ལྗོན་ཤིང་ཆེན་མོ།', cn: '续部总论·大树论', desc: 'བསོད་ནམས་རྩེ་མོའི་རྒྱུད་སྡེ་སྤྱི་རྣམ། ལྗོན་ཤིང་ཆེན་མོའི་འགྲེལ་པ། 续部总论、大树论释', phase: 3, locked: true },
-    { num: '༨', cnNum: '8', title: 'ཀྱཻ་རྡོ་རྗེའི་རྒྱུད་འགྲེལ། དཀྱིལ་ཆོག', cn: '喜金刚续释·坛城仪轨', desc: 'ཀྱཻ་རྡོ་རྗེའི་རྒྱུད་ཀྱི་འགྲེལ་པ། དཀྱིལ་འཁོར་གྱི་ཆོ་ག་དང་སྒྲུབ་ཐབས། 喜金刚续注释、坛城仪轨与成就法', phase: 3, locked: true },
-    { num: '༩', cnNum: '9', title: 'ལམ་འབྲས་ཆེན་མོ།', cn: '大道果法', desc: 'སྣང་གསུམ་དང་རྒྱུད་གསུམ་གྱི་བཤད་ཁྲིད། ལམ་འབྲས་བུ་དང་བཅས་པའི་གཞུང་ཤིང་། 三现分、三续论讲解、大道果根本论', phase: 3, locked: true },
+    { num: '༡', cnNum: '1', title: 'བོད་ཡིག་ཀློག་སྟངས་དང་ཡིག་གཟུགས།', cn: '藏文读写与书法', desc: '基础藏文字母拼读、常用回向文及萨迦派日常仪轨诵念。', phase: 1 },
+    { num: '༢', cnNum: '2', title: 'སུམ་རྟགས་དག་གསུམ། རྟགས་རིགས་བློ་རིགས།', cn: '三十颂·音势论·因明基础', desc: '传统文法《三十颂》、诗学明镜基本修辞以及逻辑心智初阶。', phase: 1 },
+    { num: '༣', cnNum: '3', title: 'སྙན་ངག་དང་སྐར་རྩིས། ས་སྐྱ་ལེགས་བཤད།', cn: '诗学·历算·萨迦格言', desc: '研读经典《萨迦格言》释义，熏习处事与修身世出世间双全智慧。', phase: 1 },
+    { num: '༤', cnNum: '4', title: 'ཚད་མ་རིག་པ། ཕར་ཕྱིན།', cn: '显教量理·般若现观', desc: '萨迦班智达巨著《量理宝藏论》显教正理，般若现观前四品精要。', phase: 2 },
+    { num: '༥', cnNum: '5', title: 'དབུ་མ། མངོན་པ།', cn: '中观深义·俱舍论述', desc: '深挖《入中论》唯识与中观见解差异，剖析大乘阿毗达磨世界观。', phase: 2 },
+    { num: '༦', cnNum: '6', title: 'འདུལ་བ། སྡོམ་གསུམ་རབ་དབྱེ།', cn: '戒律根本·三戒分别', desc: '别解脱戒律本论，萨班名作《三戒分别论》核心见地与辨析。', phase: 2 },
+    { num: '༧', cnNum: '7', title: 'རྒྱུད་སྡེ་སྤྱི་རྣམ། ལྗོན་ཤིང་ཆེན་མོ།', cn: '续部总论·金刚乘入门', desc: '至尊索南策摩撰《续部总论》，理清事续、行续、瑜伽续、无上瑜伽续分别。', phase: 3 },
+    { num: '༨', cnNum: '8', title: 'ཀྱཻ་རྡོ་རྗེའི་རྒྱུད་འགྲེལ། དཀྱིལ་ཆོག', cn: '喜金刚本续·坛城仪轨', desc: '萨迦派不共核心本尊——喜金刚生起次第与圆满次第修法轨范。', phase: 3 },
+    { num: '༩', cnNum: '9', title: 'ལམ་འབྲས་ཆེན་མོ།', cn: '核心大道果法', desc: '萨迦派无上法宝《道果》体系，三现分与三续本论大修证指导。', phase: 3 },
 ];
 
-const videos = [
-    { title: 'སྐྱབས་འགྲོའི་བཤད་ཁྲིད། ༼༡༽', cn: '皈依讲解（一）', dur: '༤༥ སྐར་མ། 45分钟', level: 'སློབ་རིམ་༡ 一级', teacher: 'མཁན་པོ་འཇམ་དབྱངས། 姜央堪布' },
-    { title: 'བླ་མའི་རྣལ་འབྱོར་གྱི་ངག་འདོན་འགྲེལ་པ།', cn: '上师瑜伽念诵释', dur: '༣༠ སྐར་མ། 30分钟', level: 'སློབ་རིམ་༡ 一级', teacher: 'མཁན་པོ་བསོད་ནམས། 索南堪布' },
-    { title: 'ཚད་མ་རིགས་གཏེར་གྱི་དང་པོ།', cn: '量理宝藏论（一）', dur: '༦༠ སྐར་མ། 60分钟', level: 'སློབ་རིམ་༤ 四级', teacher: 'དགེ་བཤེས་ཐུབ་བསྟན། 土登格西' },
-    { title: 'དབུ་མ་འཇུག་པའི་ལེའུ་དྲུག་པ།', cn: '入中论第六品', dur: '༥༥ སྐར་མ། 55分钟', level: 'སློབ་རིམ་༥ 五级', teacher: 'དགེ་བཤེས་ཐུབ་བསྟན། 土登格西' },
-    { title: 'ཕྱག་ཆེན་སྨོན་ལམ་གྱི་འགྲེལ་པ།', cn: '大手印愿文释', dur: '༥༠ སྐར་མ། 50分钟', level: 'སློབ་རིམ་༦ 六级', teacher: 'མཁན་པོ་འཇམ་དབྱངས། 姜央堪布' },
-    { title: 'ལམ་འབྲས་ཀྱི་སྣང་གསུམ་ནང་གི་སྣང་སུམ་པ།', cn: '道果三现分中的现分', dur: '༩༠ སྐར་མ། 90分钟', level: 'སློབ་རིམ་༩ 九级', teacher: 'མཁན་རིན་པོ་ཆེ། 堪布仁波切', locked: true },
-];
+// 第一级别精细教材数字化文本库
+const textbookContent = {
+    '1': {
+        tibTitle: 'བོད་ཡིག་འཛིན་རིམ་དང་པོའི་སློབ་དེབ།',
+        cnTitle: '藏文读写与书法·初级学制第一册教材',
+        body: `
+            <div style="padding: 1rem; border-left: 4px solid var(--sakya-red); background:#fff; margin-bottom:1rem;">
+                <h4 style="color:var(--sakya-red); margin-bottom:0.5rem;">སློབ་ཚན་དང་པོ། གསལ་བྱེད་སུམ་བཅུ། (The 30 Consonants)</h4>
+                <p>བོད་ཡིག་ལ་གསལ་བྱེད་སུམ་བཅུ་ཡོད་ཅིང་། དེ་དག་སྡེ་པ་བདུན་དང་སྡེ་ཚན་གཅིག་ལ་བགོས་ནས་བཀླག་དགོས།</p>
+                <div style="margin: 0.8rem 0; font-size:0.95rem; line-height:1.8;">
+                    <b>སྡེ་པ་དང་པོ། (ཀ་སྡེ):</b> ཀ (ka) ། ཁ (kha) ། ག (ga) ། ང་ (nga) །<br>
+                    <b>སྡེ་པ་གཉིས་པ། (ཅ་སྡེ):</b> ཅ (ca) ། ཆ (cha) ། ཇ (ja) ། ཉ (nya) །<br>
+                    <b>སྡེ་པ་གསུམ་པ། (ཏ་སྡེ):</b> ཏ (ta) ། ཐ (tha) ། ད (da) ། ན (na) །<br>
+                    <b>སྡེ་པ་བཞི་པ། (པ་སྡེ):</b> པ (pa) ། ཕ (pha) ། བ (ba) ། མ (ma) །<br>
+                    <b>སྡེ་པ་ལྔ་པ། (ཙ་སྡེ):</b> ཙ (tsa) ། ཚ (tsha) ། ཛ (dza) ། ཝ (wa) །<br>
+                    <b>སྡེ་པ་དྲུག་པ། (ཞ་སྡེ):</b> ཞ (zha) ། ཟ (za) ། འ (['a]) ། ཡ (ya) །<br>
+                    <b>སྡེ་པ་བདུན་པ། (ར་སྡེ):</b> ར (ra) ། ལ (la) ། ཤ (sha) ། ས (sa) །<br>
+                    <b>སྡེ་ཚན་ཐ་མ།:</b> ཧ (ha) ། ཨ (a) །
+                </div>
+            </div>
 
+            <div style="padding: 1rem; border-left: 4px solid var(--sakya-gold); background:#fff; margin-bottom:1rem;">
+                <h4 style="color:var(--sakya-blue); margin-bottom:0.5rem;">སློབ་ཚན་གཉིས་པ། དབྱངས་ཡིག་བཞི། (The 4 Vowels)</h4>
+                <p>བོད་ཡིག་གི་རྩ་བའི་སྒྲ་གདངས་ ཨ་ (a) ཕུད། གཞན་དབྱངས་ཡིག་བཞི་ཡོད། དེ་དག་གསལ་བྱེད་ཀྱི་སྟེང་འོག་ཏུ་སྦྱོར་དགོས།</p>
+                <p style="margin-top:0.4rem; font-weight:bold; color:var(--sakya-red);">
+                    ི གི་གུ། (i) ༼ དཔེར་ན། ཀི ༽ | ུ ཞབས་ཀྱུ། (u) ༼ དཔེར་ན། ཀུ ༽<br>
+                    ེ འགྲེང་བུ། (e) ༼ དཔེར་ན། ཀེ ༽ | ོ ན་རོ། (o) ༼ དཔེར་ན། ཀོ ༽
+                </p>
+            </div>
+
+            <div style="padding: 1rem; border-left: 4px solid #4a7c6f; background:#fff; margin-bottom:1rem;">
+                <h4 style="color:#4a7c6f; margin-bottom:0.5rem;">སློབ་ཚན་གསུམ་པ། དབྱངས་གསལ་སྦྱོར་ཀློག (Combining)</h4>
+                <p>1. གི་གུ་སྦྱོར་སྟངས།: ཀ་ལ་གི་གུ་ ཀི། ཁ་ལ་གི་གུ་ ཁི། ག་ལ་གི་གུ་ གི། ང་ལ་གི་གུ་ ངི།</p>
+                <p>2. ཞབས་ཀྱུ་སྦྱོར་སྟངས།: ཅ་ལ་ཞབས་ཀྱུ་ ཅུ། ཆ་ལ་ཞབས་ཀྱུ་ ཆུ། ཇ་ལ་ཞབས་ཀྱུ་ ཇུ། ཉ་ལ་ཞབས་ཀྱུ་ ཉུ།</p>
+                <p>3. འགྲེང་བུ་སྦྱོར་སྟངས།: ཏ་ལ་འགྲེང་བུ་ ཏེ། ཐ་ལ་འགྲེང་བུ་ ཐེ། ད་ལ་འགྲེང་བུ་ དེ། ན་ལ་འགྲེང་བུ་ ནེ།</p>
+                <p>4. ན་རོ་སྦྱོར་སྟངས།: པ་ལ་ན་རོ་ པོ། ཕ་ལ་ན་རོ་ ཕོ། བ་ལ་ན་རོ་ བོ། མ་ལ་ན་རོ་ མོ།</p>
+            </div>
+
+            <div style="padding: 1rem; background:#fff; border:1px solid var(--border-color); margin-bottom:1rem;">
+                <h4 style="color:var(--sakya-dark); margin-bottom:0.5rem;">སློབ་ཚན་བཞི་པ། མིང་ཚིག་གསར་པ། (Vocabulary)</h4>
+                <p><b>ང་།</b> (I / Me) | <b>ཆུ།</b> (Water) | <b>རེ།</b> (Each / Hope) | <b>ལོ།</b> (Year / Age) | <b>ཨ་མ།</b> (Mother) | <b>ཨ་ཕ།</b> (Father)</p>
+            </div>
+
+            <div style="padding: 1rem; background:var(--sakya-cream); border-radius:8px; margin-bottom:1rem;">
+                <h4 style="color:var(--sakya-red); margin-bottom:0.5rem;">སློབ་ཚན་ལྔ་པ་དང་དྲུག་པ། མགོ་ཅན་དང་འདོགས་ཅན།</h4>
+                <p><b>མགོ་ཅན་གསུམ (上加字):</b> ར་མགོ། (རྐ རྒ རྔ) | ལ་མགོ། (ལྐ ལྒ ལྔ) | ས་མགོ། (སྐ སྒ སྔ)</p>
+                <p><b>འདོགས་ཅན་བཞི (下贴字):</b> ཡ་བཏགས (ྱ - ཀྱ ཁྱ གྱ) | ར་བཏགས (ྲ - ཀྲ ཁྲ གྲ) | ལ་བཏགས (ླ - ཀླ གླ བླ) | ཝ་ཟུར (ྭ - ཀྭ ཁྭ གྭ)</p>
+            </div>
+
+            <div style="padding: 1rem; background:#faf8f3; border: 2px dashed var(--sakya-gold);">
+                <h4 style="margin-bottom:0.3rem;">སློབ་ཚན་བདུན་པ། སྔོན་འཇུག་དང་རྗེས་འཇུག (Prefixes & Suffixes)</h4>
+                <p><b>སྔོན་འཇུག་ལྔ།:</b> ག ད བ མ འ། (置于名首字前)</p>
+                <p><b>རྗེས་འཇུག་བཅུ།:</b> ག ང་ ད ན བ མ འ ར ལ ས། (置于字后缀)</p>
+            </div>
+        `
+    }
+};
+
+// 为1到9级别量身订制的专属AI把关考题
 const examQuestions = {
-    beginner: [
-        { q: 'སྐྱབས་འགྲོའི་ཡུལ་གསུམ་གང་ཡིན།', cnQ: '皈依三宝是指哪三宝？', opts: [
-            { t: 'སངས་རྒྱས། ཆོས། དགེ་འདུན།', cn: '佛、法、僧', correct: true },
-            { t: 'བླ་མ། ཡི་དམ། ཆོས་སྐྱོང་།', cn: '上师、本尊、护法', correct: false },
-            { t: 'ཕ་མ། བླ་མ། སངས་རྒྱས།', cn: '父母、上师、佛', correct: false }
+    '1': [
+        { q: 'བོད་ཡིག་ལ་གསལ་བྱེད་ཡི་གེ་དུ་ཡོད་དམ།', cnQ: '藏文字母的基本辅音（གསལ་བྱེད）共有多少个？', opts: [
+            { t: 'ཉི་ཤུ།', cn: '20个', correct: false },
+            { t: 'སུམ་བཅུ།', cn: '30个', correct: true },
+            { t: 'བཞི་བཅུ།', cn: '40个', correct: false }
         ]},
-        { q: 'སྤྱོད་འཇུག་གི་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《入菩萨行论》的作者是谁？', opts: [
-            { t: 'ཞི་བ་ལྷ།', cn: '寂天菩萨', correct: true },
-            { t: 'ས་ཐལ་གྱི་བུ།', cn: '龙树菩萨', correct: false },
-            { t: 'བྱམས་པ།', cn: '弥勒菩萨', correct: false }
+        { q: 'གཤམ་གྱི་ཡི་གེ་གང་ནི་དབྱངས་ཡིག་ "ན་རོ་" ཡིན།', cnQ: '下列哪一个符号是藏文四元音中的“ ན་རོ ། (o)”？', opts: [
+            { t: 'ི', cn: 'གི་གུ། (i)', correct: false },
+            { t: 'ུ', cn: 'ཞབས་ཀྱུ། (u)', correct: false },
+            { t: 'ོ', cn: 'ན་རོ། (o)', correct: true }
         ]},
-        { q: 'བྱང་ཆུབ་ཀྱི་སེམས་གཉིས་སུ་དབྱེ་ན་གང་ཡིན།', cnQ: '菩提心分为哪两种？', opts: [
-            { t: 'སྨོན་སེམས་དང་འཇུག་སེམས།', cn: '愿菩提心与行菩提心', correct: true },
-            { t: 'རྒྱུའི་སེམས་དང་འབྲས་བུའི་སེམས།', cn: '因心与果心', correct: false },
-            { t: 'ཐེག་ཆེན་དང་ཐེག་དམན།', cn: '大乘与小乘', correct: false }
+        { q: 'མགོ་ཅན་གྱི་ཡི་གེ་དུ་ཡོད་དམ།', cnQ: '藏文语法中可置于其他辅音上方的“ མགོ་ཅན ། (上加字)”共有几个？', opts: [
+            { t: 'གསུམ། (ར། ལ། ས།)', cn: '3个（Ra, La, Sa头字）', correct: true },
+            { t: 'བཞི། (ཡ། ར། ལ། ཝ།)', cn: '4个', correct: false },
+            { t: 'ལྔ། (ག། ད། བ། མ། འ།)', cn: '5个', correct: false }
+        ]},
+        { q: '“ཀ་ལ་གི་གུ་” སྦྱར་ན་གང་ལྟར་བྲི་དགོས།', cnQ: '当辅音 ཀ (ka) 加上元音符号 གི་གུ། (i) 时，应当如何书写？', opts: [
+            { t: 'ཀུ', cn: 'Ku', correct: false },
+            { t: 'ཀི', cn: 'Ki', correct: true },
+            { t: 'ཀེ', cn: 'Ke', correct: false }
+        ]},
+        { q: '“ཏ་ལ་ར་བཏགས་” བཏགས་ན་སྒྲ་གདངས་གང་དུ་འགྱུར།', cnQ: '辅音 ཏ (ta) 结合下贴字 ར་བཏགས། (Ra-ta) 之后，组合成的复辅音是哪个？', opts: [
+            { t: 'ཏྲ', cn: 'ཏྲ (tra)', correct: true },
+            { t: 'ཏྱ', cn: 'ཏྱ (tya)', correct: false }
+        ]},
+        { q: 'བོད་ཡིག་གི་མིང་ཚིག་ “ཆུ།” ཞེས་པའི་དོན་ཅི་ཡིན proclam།', cnQ: '第一课词汇中的 “ཆུ།” 在日常与仪轨中代表什么含义？', opts: [
+            { t: 'Mother', cn: '母亲', correct: false },
+            { t: 'Water', cn: '水', correct: true },
+            { t: 'I / Me', cn: '我', correct: false }
+        ]},
+        { q: 'སྔོན་འཇུག་གི་ཡི་གེ་དུ་ཡོད་དམ།', cnQ: '写在藏文名称首字前面的“ སྔོན་འཇུག ། (前加字)”共有几个？', opts: [
+            { t: 'ལྔ། (ག ད བ མ འ།)', cn: '5个（Ga, Da, Ba, Ma, \'A）', correct: true },
+            { t: 'བཅུ།', cn: '10个', correct: false }
+        ]},
+        { q: 'གཤམ་གྱི་ཡི་གེ་གང་ནི་རྗེས་འཇུག་བཅུའི་ནང་དུ་མི་གཏོགས་པ་ཡིན།', cnQ: '下列哪一个字母不属于藏文语法中规定的十个“ རྗེས་འཇུག ། (后加字)”？', opts: [
+            { t: 'ས', cn: 'Sa', correct: false },
+            { t: 'ཧ', cn: 'Ha', correct: true },
+            { t: 'ང', cn: 'Nga', correct: false }
         ]}
     ],
-    intermediate: [
-        { q: 'ས་སྐྱ་པའི་གྲུབ་མཐའ་གཙོ་བོ་གང་ཡིན།', cnQ: '萨迦派主要宗义是什么？', opts: [
-            { t: 'དབུ་མ།', cn: '中观', correct: false },
-            { t: 'རྣམ་འབྱེད་ཀྱི་གྲུབ་མཐའ།', cn: '唯识宗义', correct: false },
-            { t: 'སྔ་ཕྱི་གཉིས་ཀར་དབུ་མ་ལ་རྟེན།', cn: '前后皆依中观', correct: true }
-        ]},
-        { q: 'ཚད་མ་རིགས་གཏེར་གྱི་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《量理宝藏论》的作者是谁？', opts: [
-            { t: 'ས་སྐྱ་པཎྜི་ཏ།', cn: '萨迦班智达', correct: true },
-            { t: 'ཙོང་ཁ་པ།', cn: '宗喀巴大师', correct: false },
-            { t: 'མི་ཕམ་རིན་པོ་ཆེ།', cn: '麦彭仁波切', correct: false }
+    '2': [
+        { q: 'སུམ་ཅུ་པའི་རྩ་བ་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《文法三十颂》的最初创制者是谁？', opts: [
+            { t: 'ཐོན་མི་སཾ་བྷོ་ཊ།', cn: '吞米·桑布扎', correct: true },
+            { t: 'ས་སྐྱ་པཎྜི་ཏ།', cn: '萨迦班智达', correct: false }
+        ]}
+    ],
+    '3': [
+        { q: 'ས་སྐྱ་ལེགས་བཤད་ཀྱི་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《萨迦格言》一书的核心教授主旨是什么？', opts: [
+            { t: 'ལུགས་གཉིས་ཀྱི་བསླབ་བྱ།', cn: '智者辨别世间法与出世间法的双重轨范', correct: true },
+            { t: 'གསང་སྔགས་ཀྱི་ཆོ་ག།', cn: '单纯的密乘仪轨技术', correct: false }
+        ]}
+    ],
+    '4': [
+        { q: 'ཚད་མ་རིགས་གཏེར་གྱི་རྩ་བ་མཛད་པ་པོ་སུ་ཡིན།', cnQ: '《量理宝藏论》的作者是谁？', opts: [
+            { t: 'ས་སྐྱ་པཎྜི་ཏ་ཀུན་དགའ་རྒྱལ་མཚན།', cn: '萨迦班智达·贡噶坚赞', correct: true },
+            { t: 'རྗེ་ཙོང་ཁ་པ།', cn: '宗喀巴大师', correct: false }
+        ]}
+    ],
+    '5': [
+        { q: 'དབུ་མ་ལ་རྟེན་ནས་མཐར་འཛིན་སྤོང་བ་གང་ཡིན།', cnQ: '中观学派在论证法无自性时，最根本的理据是？', opts: [
+            { t: 'རྟེན་ཅིང་འབྲེལ་བར་འབྱུང་བ།', cn: '缘起性空、远离四边生灭', correct: true },
+            { t: 'གཟུགས་形质恒常存在', cn: '诸法独立有自相', correct: false }
+        ]}
+    ],
+    '6': [
+        { q: 'སྡོམ་གསུམ་རབ་དབྱེའི་ནང་དོན་གཙོ་བོ་གང་ཡིན།', cnQ: '《三戒分别论》处理的核心逻辑关系是什么？', opts: [
+            { t: 'སྡོམ་པ་གསུམ་གྱི་གནད་辨གཅིག', cn: '别解脱戒、菩萨戒、密乘戒在同一心相续中的圆融', correct: true },
+            { t: 'སྔགས་ཀྱི་དབང་ཁོ་ན།', cn: '仅仅讲授密宗灌顶', correct: false }
+        ]}
+    ],
+    '7': [
+        { q: 'རྒྱུད་སྡེ་བཞི་གང་དག་ཡིན།', cnQ: '萨迦金刚乘体系中续部总论划分的“续部四门”是？', opts: [
+            { t: 'བྱ་རྒྱུད། སྤྱོད་རྒྱུད། རྣལ་འབྱོར་རྒྱུད། བླ་མེད་རྒྱུད།', cn: '事续、行续、瑜伽续、无上瑜伽续', correct: true },
+            { t: 'མདོ་དང་བསྟན་བཅོས།', cn: '经律论三藏', correct: false }
+        ]}
+    ],
+    '8': [
+        { q: 'དཔལ་ཀྱཻ་རྡོ་རྗེ་ནི་རྒྱུད་སྡེ་གང་ལ་གཏོགས།', cnQ: '萨迦派不共本尊吉祥喜金刚属于四续部中的哪一部？', opts: [
+            { t: 'བླ་མེད་རྒྱུད་ཀྱི་མ་རྒྱུད།', cn: '无上瑜伽续之母续', correct: true },
+            { t: 'བྱ་བའི་རྒྱུད།', cn: '初阶的事续', correct: false }
+        ]}
+    ],
+    '9': [
+        { q: 'ལམ་འབྲས་ཀྱི་རྨང་གཞི་སྣང་བ་གསུམ་གང་ཡིན།', cnQ: '萨迦派核心无上《道果法》调伏心相续的基础“三现分”是？', opts: [
+            { t: 'མ་དག་པའི་སྣང་བ། རྣལ་འབྱོར་བའི་སྣང་བ། དག་པའི་སྣང་བ།', cn: '不净现分、瑜伽现分、清净现分', correct: true },
+            { t: 'འདོད་ཁམས་དང་གཟུགས་ཁམས།', cn: '欲界与色界', correct: false }
         ]}
     ]
 };
 
-// ===== STATE =====
 let currentLang = 'bo';
-let currentExam = null;
+let currentExamLevel = null;
 let examIdx = 0;
 let examScore = 0;
-let accessGranted = false;
-let pendingAction = null;
 
-// ===== INIT =====
+// ===== INITIAL SETUP =====
 function chooseLang(lang) {
     currentLang = lang;
     document.getElementById('lang-select-overlay').classList.add('hidden');
     document.getElementById('btn-lang-' + lang).classList.add('active');
     document.getElementById('btn-lang-' + (lang === 'bo' ? 'zh' : 'bo')).classList.remove('active');
+    updateAITeacherStatus();
 }
 
 function toggleLang(lang) {
     currentLang = lang;
     document.getElementById('btn-lang-bo').classList.toggle('active', lang === 'bo');
     document.getElementById('btn-lang-zh').classList.toggle('active', lang === 'zh');
-    // In a full app, this would re-render all text content
 }
 
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById('view-' + viewId).classList.add('active');
     document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    
     const navBtn = Array.from(document.querySelectorAll('.nav-link')).find(n => n.getAttribute('onclick')?.includes("'" + viewId + "'"));
     if (navBtn) navBtn.classList.add('active');
     window.scrollTo(0, 0);
 
     if (viewId === 'levels') renderLevels();
+    if (viewId === 'exam') prepareExamInterface();
+    if (viewId === 'cert') renderCertificates();
+    if (viewId === 'dashboard') updateDashboard();
 }
 
-// ===== LEVELS =====
+// ===== LEVELS LIST RENDERING (STRICT LOCK LOGIC) =====
 function renderLevels() {
     const container = document.getElementById('levels-container');
     let html = '';
     let currentPhase = 0;
+
     levelsData.forEach(lv => {
+        const lvlInt = parseInt(lv.cnNum);
+        let isLocked = lvlInt > userCurrentLevel;      // 关卡门禁：高于当前进度的一律封锁
+        let isCompleted = lvlInt < userCurrentLevel;   // 小于当前进度的属于已考核过级别
+
         if (lv.phase !== currentPhase) {
             currentPhase = lv.phase;
             const phaseTitles = ['', 'དུས་རིམ་དང་པོ། རྨང་གཞི། (སློབ་རིམ་༡–༣)', 'དུས་རིམ་གཉིས་པ། མཚན་ཉིད། (སློབ་རིམ་༤–༦)', 'དུས་རིམ་གསུམ་པ། གསང་སྔགས། (སློབ་རིམ་༧–༩)'];
             const phaseCns = ['', '初级阶段：基础与共明', '中级阶段：显教法相', '高级阶段：密续与高阶'];
             html += `<div class="level-group"><div class="level-group-title"><h3>${phaseTitles[lv.phase]}</h3><span class="cn">${phaseCns[lv.phase]}</span></div></div>`;
         }
-        const lockedClass = lv.locked ? 'locked' : '';
-        const lockIcon = lv.locked ? '&#x1F512; ' : '';
-        const btnClass = lv.locked ? 'btn-locked' : 'btn-study';
-        const btnText = lv.locked ? 'སྒོ་བརྒྱབས་ཡོད། 已锁定' : 'སློབ་སྦྱོང་། 学习';
-        const onclick = lv.locked ? 'promptAccess()' : '';
+
+        let rowClass = isLocked ? 'locked' : '';
+        let btnHtml = '';
+
+        if (isLocked) {
+            btnHtml = `<button class="btn-locked" disabled>🔒 请先通过上一级AI考核</button>`;
+        } else if (isCompleted) {
+            btnHtml = `<button class="btn-study" onclick="loadTextbookToReader(${lvlInt})">温习教材</button>
+                       <button class="btn-video" style="background:#4a7c6f; color:white;" disabled>✅ 考核通过</button>`;
+        } else {
+            // 当前正学关卡
+            btnHtml = `<button class="btn-study" onclick="loadTextbookToReader(${lvlInt})">📖 进入修学</button>
+                       <button class="btn-exam-now" onclick="showView('exam')">⚡ 请求AI考核</button>`;
+        }
+
         html += `
-            <div class="level-row ${lockedClass}">
+            <div class="level-row ${rowClass}" style="${isLocked ? 'opacity: 0.55;' : ''}">
                 <div class="level-num l${lv.cnNum}">${lv.num}</div>
                 <div class="level-info">
-                    <h4>${lockIcon}${lv.title}</h4>
+                    <h4>${isLocked ? '🔒 ' : ''}${lv.title}</h4>
                     <div class="cn-name">${lv.cn}</div>
                     <div class="level-desc">${lv.desc}</div>
                 </div>
                 <div class="level-actions">
-                    <button class="${btnClass}" onclick="${onclick}">${btnText}</button>
-                    <button class="btn-video" onclick="${lv.locked ? 'promptAccess()' : 'showView(\'videos\')'}">&#x25B6; བརྙན། 视频</button>
+                    ${btnHtml}
                 </div>
             </div>
         `;
@@ -1343,111 +981,198 @@ function renderLevels() {
     container.innerHTML = html;
 }
 
-// ===== VIDEO =====
-let currentVideoIdx = 0;
-function playVideo() {
-    alert('བརྙན་ལམ་སློབ་ཁྲིད་འགོ་བཙུགས། 开始播放视频教学');
-}
-function loadVideo(idx) {
-    currentVideoIdx = idx;
-    const v = videos[idx];
-    if (v.locked) { promptAccess(); return; }
-    document.getElementById('video-title').textContent = v.title;
-    document.getElementById('video-cn-title').textContent = v.cn;
-    document.getElementById('video-duration').textContent = '&#x23F1; ' + v.dur;
-    document.getElementById('video-level').textContent = '&#x1F393; ' + v.level;
-    document.getElementById('video-teacher').textContent = '&#x1F464; ' + v.teacher;
-    document.querySelectorAll('.video-controls .v-control').forEach((b, i) => b.classList.toggle('active', i === idx));
-}
-
-// ===== ACCESS CONTROL =====
-function promptAccess() {
-    pendingAction = 'video';
-    document.getElementById('access-modal').classList.add('active');
-    document.getElementById('access-code-input').value = '';
-    document.getElementById('access-code-input').focus();
-}
-function promptAccessExam() {
-    pendingAction = 'exam';
-    document.getElementById('access-modal').classList.add('active');
-    document.getElementById('access-code-input').value = '';
-    document.getElementById('access-code-input').focus();
-}
-function checkAccessCode() {
-    const code = document.getElementById('access-code-input').value.trim();
-    if (code === 'SAKYA' || code === 'ས་སྐྱ') {
-        accessGranted = true;
-        document.getElementById('access-modal').classList.remove('active');
-        alert('ཆོག་མཆན་ལེགས་པར་ཐོབ་སོང་། 密码正确，已解锁密法课程。');
-        levelsData.forEach(l => { if (l.phase === 3) l.locked = false; });
-        if (document.getElementById('view-levels').classList.contains('active')) renderLevels();
-        document.querySelectorAll('.cert-card.locked').forEach(c => { c.classList.remove('locked'); c.querySelector('.cert-status').textContent = 'སྒོ་ཕྱེས་ཡོད། 已解锁'; c.querySelector('.cert-status').className = 'cert-status pending'; c.querySelector('.cert-icon').textContent = '🏆'; });
-        if (pendingAction === 'exam') startExam('advanced');
+// ===== E-READER INTEGRATION FUNCTION =====
+function loadTextbookToReader(lvl) {
+    if(textbookContent[String(lvl)]) {
+        document.getElementById('ereader-tib').innerHTML = `<h4>${textbookContent[String(lvl)].tibTitle}</h4>` + textbookContent[String(lvl)].body;
+        document.getElementById('ereader-cn').innerHTML = `<h4>${textbookContent[String(lvl)].cnTitle}</h4><p>系统已成功加载该级别数字化标准文献教材。请对照左侧辅音、元音及音位组合结构进行系统诵读与研习。学完本章所有教学大纲要求后，即可点击上方“AI考核”大厅发起挑战。</p>`;
+        showView('reader');
     } else {
-        alert('ལག་འཁྱེར་ནོར་འདུག 密码错误，请重新输入。');
+        alert('第 ' + lvl + ' 级的高阶密典文本正在由书院译师团队校勘并进行数字化录入，请直接点击“请求AI考核”开始测试您的修学进度！');
     }
 }
 
-// ===== EXAM =====
-function startExam(level) {
-    if (level === 'advanced' && !accessGranted) { promptAccessExam(); return; }
-    currentExam = examQuestions[level] || [];
-    if (currentExam.length === 0) { alert('བསྐྱར་ཞིབ་ཀྱི་དྲི་བ་གསར་སྣོན་བྱེད་བཞིན་ཡོད། 正在添加测验题目...'); return; }
-    examIdx = 0; examScore = 0;
+// ===== AI TEACHER KINETICS & CONTROLS =====
+function updateAITeacherStatus() {
+    const speechBox = document.getElementById('ai-teacher-speech');
+    if (!speechBox) return;
+
+    if (userCurrentLevel <= 9) {
+        speechBox.innerText = `【AI导师提示】：随喜你修学萨迦经典之功德。你当前处于第 ${userCurrentLevel} 级别的修学阶段。请完成该级别的完整闻思后，向我发起结业评估考核，全对即可晋级。`;
+    } else {
+        speechBox.innerText = `【AI导师提示】：极善！你已圆满通过了九级修学体系的所有AI严格考评，功德圆满！`;
+    }
+}
+
+function prepareExamInterface() {
+    updateAITeacherStatus();
+    const startBox = document.getElementById('exam-start');
+    const qBox = document.getElementById('exam-question-box');
+    const rBox = document.getElementById('exam-result-box');
+    
+    if (userCurrentLevel > 9) {
+        startBox.innerHTML = `<div class="exam-result-box">🏆 恭喜您！已功德圆满通关所有级别的AI考评体系！</div>`;
+        return;
+    }
+
+    document.getElementById('exam-start-title').innerText = `第 ${userCurrentLevel} 级别 AI 老师现场考核`;
+    startBox.style.display = 'block';
+    qBox.style.display = 'none';
+    rBox.style.display = 'none';
+}
+
+function startAIExam() {
+    currentExamLevel = String(userCurrentLevel);
+    examIdx = 0;
+    examScore = 0;
+    
     document.getElementById('exam-start').style.display = 'none';
-    document.getElementById('exam-result-box').style.display = 'none';
     document.getElementById('exam-question-box').style.display = 'block';
     showExamQuestion();
 }
+
 function showExamQuestion() {
-    const q = currentExam[examIdx];
-    document.getElementById('exam-q-num').textContent = String(examIdx + 1).replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
-    document.getElementById('exam-q-total').textContent = String(currentExam.length).replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
-    document.getElementById('exam-fill').style.width = ((examIdx / currentExam.length) * 100) + '%';
+    const qList = examQuestions[currentExamLevel];
+    const q = qList[examIdx];
+    
+    document.getElementById('exam-q-num').textContent = String(examIdx + 1);
+    document.getElementById('exam-q-total').textContent = String(qList.length);
+    document.getElementById('exam-fill').style.width = ((examIdx / qList.length) * 100) + '%';
+    
     document.getElementById('exam-q-text').innerHTML = `<div>${q.q}</div><div class="cn-q">${q.cnQ}</div>`;
     document.getElementById('exam-options').innerHTML = q.opts.map((o, i) =>
         `<button class="exam-option" onclick="selectExamOpt(${i})"><strong>${String.fromCharCode(65 + i)}.</strong> ${o.t}<span class="cn-opt">${o.cn}</span></button>`
     ).join('');
 }
+
 function selectExamOpt(idx) {
-    const q = currentExam[examIdx];
+    const qList = examQuestions[currentExamLevel];
+    const q = qList[examIdx];
     const opts = document.querySelectorAll('.exam-option');
-    const correct = q.opts[idx].correct;
+    const isCorrect = q.opts[idx].correct;
+
     opts.forEach((b, i) => {
         b.disabled = true;
         if (q.opts[i].correct) b.classList.add('correct');
         else if (i === idx) b.classList.add('wrong');
     });
-    if (correct) examScore++;
+
+    if (isCorrect) examScore++;
+
     setTimeout(() => {
         examIdx++;
-        if (examIdx < currentExam.length) showExamQuestion();
-        else showExamResult();
-    }, 1400);
-}
-function showExamResult() {
-    document.getElementById('exam-question-box').style.display = 'none';
-    document.getElementById('exam-result-box').style.display = 'block';
-    const pct = Math.round((examScore / currentExam.length) * 100);
-    const tibPct = pct.toString().replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
-    document.getElementById('exam-score').textContent = tibPct + '%';
-    let fb = '';
-    if (pct >= 80) fb = 'བསྐྱར་ཞིབ་ལེགས་པོ་བྱུང་སོང་། སློབ་རིམ་རྗེས་མར་འཕར་ཆོག 测验优秀！可以晋级下一级。';
-    else if (pct >= 60) fb = 'བསྐྱར་ཞིབ་ལེགས་པོ་བྱུང་སོང་། ཡང་བསྐྱར་སྦྱོང་བརྡར་གྱིས། 测验良好，请继续复习。';
-    else fb = 'ཡང་བསྐྱར་སྦྱོང་བརྡར་གྱིས་དགོས། སློབ་ཚན་ནང་དོན་ཡང་བསྐྱར་གོ་བ་ལེན་རོགས། 需要重新复习课程内容。';
-    document.getElementById('exam-feedback').textContent = fb;
-    // update progress
-    const hp = Math.min(25 + pct * 0.5, 100);
-    const tibHp = Math.round(hp).toString().replace(/\d/g, d => '༠༡༢༣༤༥༦༇༨༩'[d]);
-    document.getElementById('header-progress').textContent = `སློབ་གཉེར། ${tibHp}% | 学习进度 ${Math.round(hp)}%`;
-}
-function resetExam() {
-    document.getElementById('exam-result-box').style.display = 'none';
-    document.getElementById('exam-start').style.display = 'block';
+        if (examIdx < qList.length) {
+            showExamQuestion();
+        } else {
+            showExamResult();
+        }
+    }, 1200);
 }
 
-// ===== INITIAL RENDER =====
+function showExamResult() {
+    document.getElementById('exam-question-box').style.display = 'none';
+    const rBox = document.getElementById('exam-result-box');
+    rBox.style.display = 'block';
+    
+    const qList = examQuestions[currentExamLevel];
+    const pct = Math.round((examScore / qList.length) * 100);
+    document.getElementById('exam-score').textContent = pct + '%';
+    
+    const speechBox = document.getElementById('ai-teacher-speech');
+    const feedbackText = document.getElementById('exam-feedback');
+    const actionBtn = document.getElementById('exam-action-btn');
+
+    if (pct === 100) {
+        // 门禁放行条件：必须100%正确
+        feedbackText.innerHTML = `<span style="color:#4a7c6f; font-weight:bold;">【考核通过】</span> 善哉！你对第 ${userCurrentLevel} 级别的基础教法掌握十分扎实。AI老师已为你签署学籍，正式晋级下一层果位！`;
+        speechBox.innerText = `AI老师：法义辨析完全正确！准许解锁下一级别课程。`;
+        
+        userCurrentLevel++; // 状态状态前移，解开下一关
+        
+        actionBtn.innerText = "进入下一级别修学";
+        actionBtn.onclick = function() {
+            showView('levels');
+        };
+        
+        // 全局动态换算学习进度
+        const progressPct = Math.round((userCurrentLevel - 1) / 9 * 100);
+        document.getElementById('header-progress').textContent = `སློབ་གཉེར། | 学习进度 ${progressPct}%`;
+    } else {
+        // 任何微瑕错题一律不予通过
+        feedbackText.innerHTML = `<span style="color:var(--sakya-red); font-weight:bold;">【考核未通过】</span> 基础概念理解仍有疏漏。为了防止盲修瞎炼，AI老师暂不支持你解锁跨级学习，请返回该级别重修经典！`;
+        speechBox.innerText = `AI老师：尚有未解错题，修行当脚踏实地，请重新回修教材。`;
+        
+        actionBtn.innerText = "重新接受AI考核评估";
+        actionBtn.onclick = function() {
+            prepareExamInterface();
+        };
+    }
+}
+
+function resetExam() {
+    prepareExamInterface();
+}
+
+// ===== DYNAMIC CERTIFICATE LEDGER =====
+function renderCertificates() {
+    const certContainer = document.getElementById('cert-container');
+    let html = '';
+    
+    levelsData.forEach(lv => {
+        const lvlInt = parseInt(lv.cnNum);
+        let isPassed = lvlInt < userCurrentLevel;
+        
+        html += `
+            <div class="cert-card ${isPassed ? '' : 'locked'}">
+                <div class="cert-icon">${isPassed ? '🏆' : '🔒'}</div>
+                <h4>第 ${lv.num} 级结业荣誉证书</h4>
+                <div class="cert-cn">${lv.cn}</div>
+                <span class="cert-status ${isPassed ? 'completed' : 'locked'}">
+                    ${isPassed ? '已获得AI导师签发的结业通关认证' : '尚未解锁本级考评'}
+                </span>
+            </div>
+        `;
+    });
+    certContainer.innerHTML = html;
+}
+
+// ===== DASHBOARD PROFILE DYNAMICS =====
+function updateDashboard() {
+    document.getElementById('dash-active-level').innerText = userCurrentLevel <= 9 ? String(userCurrentLevel) : '全部圆满';
+    document.getElementById('dash-passed-count').innerText = String(userCurrentLevel - 1);
+}
+
+function playVideo() { alert('正在载入当前已解锁级别的多媒体多语种讲义视频...'); }
+
+// INITIAL EXECUTION ON LOAD
 renderLevels();
 </script>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div style="background: white; padding: 2rem; border-radius: 10px; text-align: center; max-width: 90%; width: 350px; position: relative;">
+            <button onclick="hideQRCodeModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--sakya-red); font-family: 'Noto Serif Tibetan', serif;">关注后查看课程</h3>
+            <img src="data:image/jpeg;base64,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" alt="微信二维码" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 8px;">
+            <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">扫一扫上面的二维码图案，关注 SK.大悲利众洲</p>
+        </div>
+    </div>
+
+    <script>
+        function showQRCodeModal() {
+            const modal = document.getElementById('qr-modal-overlay');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function hideQRCodeModal() {
+            const modal = document.getElementById('qr-modal-overlay');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
+
 </html>
