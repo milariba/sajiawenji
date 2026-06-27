@@ -930,6 +930,7 @@ function showView(viewId) {
     if (viewId === 'exam') prepareExamInterface();
     if (viewId === 'cert') renderCertificates();
     if (viewId === 'dashboard') updateDashboard();
+    if (viewId === 'reader') loadReaderForCurrentLevel();
 }
 
 // ===== LEVELS LIST RENDERING (STRICT LOCK LOGIC) =====
@@ -956,11 +957,11 @@ function renderLevels() {
         if (isLocked) {
             btnHtml = `<button class="btn-locked" disabled>🔒 请先通过上一级AI考核</button>`;
         } else if (isCompleted) {
-            btnHtml = `<button class="btn-study" onclick="loadTextbookToReader(${lvlInt})">温习教材</button>
+            btnHtml = `<button class="btn-study" onclick="enterStudy(${lvlInt})">温习教材</button>
                        <button class="btn-video" style="background:#4a7c6f; color:white;" disabled>✅ 考核通过</button>`;
         } else {
             // 当前正学关卡
-            btnHtml = `<button class="btn-study" onclick="loadTextbookToReader(${lvlInt})">📖 进入修学</button>
+            btnHtml = `<button class="btn-study" onclick="enterStudy(${lvlInt})">📖 进入修学</button>
                        <button class="btn-exam-now" onclick="showView('exam')">⚡ 请求AI考核</button>`;
         }
 
@@ -979,6 +980,68 @@ function renderLevels() {
         `;
     });
     container.innerHTML = html;
+}
+
+// ===== READER AUTO-LOAD FOR CURRENT LEVEL =====
+function loadReaderForCurrentLevel() {
+    renderReaderLevelSelector(userCurrentLevel);
+}
+
+function renderReaderLevelSelector(selectedLvl) {
+    let toolbar = document.getElementById('reader-level-toolbar');
+    if (!toolbar) {
+        const wrap = document.querySelector('.ereader-wrap');
+        toolbar = document.createElement('div');
+        toolbar.id = 'reader-level-toolbar';
+        toolbar.style.cssText = 'max-width:1100px;margin:0 auto 1rem auto;padding:0 2rem;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;';
+        wrap.parentNode.insertBefore(toolbar, wrap);
+    }
+    let html = '<span style="font-size:0.85rem;color:var(--text-secondary);margin-right:0.5rem;">选择课程：</span>';
+    levelsData.forEach(lv => {
+        const lvlInt = parseInt(lv.cnNum);
+        if (lvlInt > userCurrentLevel) return;
+        const isActive = lvlInt === selectedLvl;
+        const style = isActive
+            ? 'background:var(--sakya-red);color:white;border:none;padding:0.35rem 0.9rem;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:\'Noto Serif Tibetan\',serif;margin-bottom:0.3rem;'
+            : 'background:white;color:var(--text-primary);border:1px solid var(--border-color);padding:0.35rem 0.9rem;border-radius:4px;cursor:pointer;font-size:0.82rem;font-family:\'Noto Serif Tibetan\',serif;margin-bottom:0.3rem;';
+        html += `<button style="${style}" onclick="readerSelectLevel(${lvlInt})">${lv.num} <span style="font-family:\'Noto Sans SC\',sans-serif;font-size:0.75rem;opacity:0.85;">${lv.cn}</span></button>`;
+    });
+    toolbar.innerHTML = html;
+    loadTextbookToReaderInPlace(selectedLvl);
+}
+
+function readerSelectLevel(lvl) {
+    renderReaderLevelSelector(lvl);
+}
+
+function loadTextbookToReaderInPlace(lvl) {
+    if (lvl === 1) {
+        document.getElementById('ereader-tib').innerHTML = `<h4 style="color:var(--sakya-red);margin-bottom:1rem;">བོད་ཡིག་ཀློག་སྟངས་དང་ཡིག་གཟུགས།</h4>
+        <div style="text-align:center;padding:2rem 1rem;">
+            <div style="font-size:3rem;margin-bottom:1rem;">📖</div>
+            <p style="font-family:'Noto Sans SC',sans-serif;color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.5rem;">本级课程教材托管于微信公众号平台</p>
+            <a href="https://mp.weixin.qq.com/s/r48mArv5YzeeVjXv3HRiyw" target="_blank" rel="noopener noreferrer"
+               style="display:inline-block;background:var(--sakya-red);color:white;padding:0.8rem 2rem;border-radius:6px;text-decoration:none;font-family:'Noto Sans SC',sans-serif;font-weight:500;">
+               📖 进入修学 →
+            </a>
+        </div>`;
+        document.getElementById('ereader-cn').innerHTML = `<h4>藏文读写与书法·初级学制第一册</h4><p style="color:var(--text-secondary);">请点击左侧链接跳转至微信公众号阅读本级教材。</p>`;
+    } else if (textbookContent[String(lvl)]) {
+        document.getElementById('ereader-tib').innerHTML = `<h4>${textbookContent[String(lvl)].tibTitle}</h4>` + textbookContent[String(lvl)].body;
+        document.getElementById('ereader-cn').innerHTML = `<h4>${textbookContent[String(lvl)].cnTitle}</h4><p>系统已成功加载该级别数字化标准文献教材。请对照左侧辅音、元音及音位组合结构进行系统诵读与研习。学完本章所有教学大纲要求后，即可点击上方"AI考核"大厅发起挑战。</p>`;
+    } else {
+        document.getElementById('ereader-tib').innerHTML = `<h4 style="color:var(--sakya-red)">教材整理中</h4><p style="color:var(--text-secondary);font-family:'Noto Sans SC',sans-serif;">第 ${lvl} 级的高阶密典文本正在由书院译师团队校勘并进行数字化录入。</p>`;
+        document.getElementById('ereader-cn').innerHTML = `<h4>暂无教材</h4><p style="color:var(--text-secondary);">请直接前往"AI考核"大厅发起挑战。</p>`;
+    }
+}
+
+// ===== ENTER STUDY ROUTER =====
+function enterStudy(lvl) {
+    if (lvl === 1) {
+        window.open('https://mp.weixin.qq.com/s/r48mArv5YzeeVjXv3HRiyw', '_blank', 'noopener,noreferrer');
+    } else {
+        loadTextbookToReader(lvl);
+    }
 }
 
 // ===== E-READER INTEGRATION FUNCTION =====
